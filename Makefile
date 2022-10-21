@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/10/20 22:32:21 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/10/21 00:14:54 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,14 +49,14 @@ INCLUDES_PATH = ./includes
 ARCHIVES_PATH = ./archives
 
 ################################################################################
-# MANDATORY
+# PHILO
 ################################################################################
 
 M_HEADER = $(INCLUDES_PATH)/philo.h
 M_ARCHIVE = $(ARCHIVES_PATH)/philo.a
 
-M_SOURCES_PATH = $(SOURCES_PATH)/mandatory
-M_OBJECTS_PATH = $(OBJECTS_PATH)/mandatory
+M_SOURCES_PATH = $(SOURCES_PATH)
+M_OBJECTS_PATH = $(OBJECTS_PATH)
 
 M_SOURCES = $(wildcard $(M_SOURCES_PATH)/**/*.c) $(wildcard $(M_SOURCES_PATH)/*.c)
 # M_SOURCES =
@@ -244,10 +244,8 @@ gitm:
 	git push
 
 dump_sources:
-	@echo =========== MANDATORY ===========
+	@echo ============= PHILO =============
 	@echo "M_SOURCES = $(M_SOURCES)"
-	@echo ============= BONUS =============
-	@echo "B_SOURCES = $(B_SOURCES)"
 	@echo =================================
 
 ################################################################################
