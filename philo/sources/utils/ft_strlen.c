@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:20:49 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/02/02 23:02:22 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/22 17:47:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	run(void)
+/*
+** Counts how many chars string s has excluding '\0'.
+*/
+size_t	ft_strlen(const char *s)
 {
-	printf("THINKING...\n");
-	// usleep(-1);
-	// usleep(0);
-	usleep(1);
-}
-static void	cleanup(void)
-{
-}
+	size_t	length;
 
-int	main(int argc, char **argv)
-{
-	initialize_control(argc, argv);
-	if (!parsed_arguments())
-		return (EXIT_FAILURE);
-	run();
-	cleanup();
-	return (EXIT_SUCCESS);
+	if (s == NULL)
+		return (0);
+	length = 0;
+	while (s[length])
+		length++;
+	return (length);
 }

@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   has_number_of_times_each_philosopher_must_e        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:20:49 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/08/21 00:38:44 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/22 17:53:44 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	run(void)
+bool	has_number_of_times_each_philosopher_must_eat(void)
 {
-	printf("THINKING...\n");
-	// usleep(-1);
-	// usleep(0);
-	usleep(1);
-}
-static void	cleanup(void)
-{
+	return (c()->has_number_of_times_each_philosopher_must_eat);
 }
 
-int	main(int argc, char **argv)
+void	enable_number_of_times_each_philosopher_must_eat(void)
 {
-	initialize_control(argc, argv);
-	if (!parsed_arguments())
-		return (EXIT_FAILURE);
-	run();
-	cleanup();
-	return (EXIT_SUCCESS);
+	c()->has_number_of_times_each_philosopher_must_eat = true;
 }

@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_skip_whitespace.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:20:49 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2021/03/05 23:47:06 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/22 17:47:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	run(void)
+/*
+** Advances a char pointer until it stops pointing at an ASCII whitespace.
+*/
+char	*ft_skip_whitespace(char *str)
 {
-	printf("THINKING...\n");
-	// usleep(-1);
-	// usleep(0);
-	usleep(1);
-}
-static void	cleanup(void)
-{
-}
-
-int	main(int argc, char **argv)
-{
-	initialize_control(argc, argv);
-	if (!parsed_arguments())
-		return (EXIT_FAILURE);
-	run();
-	cleanup();
-	return (EXIT_SUCCESS);
+	while (ft_is_whitespace(*str))
+		str++;
+	return (str);
 }
