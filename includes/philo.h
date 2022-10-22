@@ -6,15 +6,16 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:27:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 22:46:17 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 # include <stdio.h>
 # include <pthread.h>
 
@@ -24,13 +25,38 @@
 # include <warnings.h>
 
 /******************************************************************************\
+ * CONTROL
+\******************************************************************************/
+
+t_philosophers	*c(void);
+void			initialize_control(int argc, char **argv);
+void			deinitialize_control(void);
+
+bool			debug(void);
+void			enable_debug(void);
+
+int				argc(void);
+char			**argv(void);
+
+t_useconds		start(void);
+
+// t_list			**lalloc(void);
+// void			free_lalloc(void);
+
+/******************************************************************************\
  * TIME
 \******************************************************************************/
 
-void		gettimeofday_or_die(t_timeval *tp, t_timezone *tzp);
+void			gettimeofday_or_die(t_timeval *tp, t_timezone *tzp);
 
-t_useconds	now(void);
-t_useconds	get_elapsed_time(t_useconds start);
-t_mseconds	get_timestamp(t_useconds start);
+t_useconds		now(void);
+t_useconds		get_elapsed_time(t_useconds start);
+t_mseconds		get_timestamp(t_useconds start);
+
+/******************************************************************************\
+ * UTILS
+\******************************************************************************/
+
+void			ft_bzero(void *s, size_t n);
 
 #endif
