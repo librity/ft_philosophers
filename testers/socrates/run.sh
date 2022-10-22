@@ -5,11 +5,9 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/20 23:16:22 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/10/20 22:16:47 by lpaulo-m         ###   ########.fr        #
+#    Created: 2022/10/22 11:25:57 by lpaulo-m          #+#    #+#              #
+#    Updated: 2022/10/22 11:25:59 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-make re || exit
-
-./philo
+python3 socrates.py ../..

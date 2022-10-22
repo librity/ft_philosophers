@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:42:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 11:14:40 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 typedef struct timeval	t_timeval;
 typedef struct timezone	t_timezone;
+
 typedef long			t_seconds;
 typedef long			t_mseconds;
 typedef long			t_useconds;

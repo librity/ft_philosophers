@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:47:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 23:06:39 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ static void	initialize(int argc, char **argv)
 
 static void	run(void)
 {
-	t_mseconds timestamp_ms;
+	t_mseconds timestamp;
 
-	timestamp_ms = get_timestamp(start());
+	timestamp = get_timestamp();
 	printf("start() = %ld\n", start());
-	printf("timestamp_ms = %ld\n", timestamp_ms);
+	printf("timestamp = %ld\n", timestamp);
 
 	printf("Sleeping for %d seconds...", 2);
 	usleep(2 * MICROSECONDS_IN_A_SECOND);
-	timestamp_ms = get_timestamp(start());
+	timestamp = get_timestamp();
 	printf("DONE\n");
 
-	printf("timestamp_ms = %ld\n", timestamp_ms);
-
+	printf("timestamp = %ld\n", timestamp);
 }
+
 static void	cleanup(void)
 {
 }

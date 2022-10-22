@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:46:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 23:39:07 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ t_useconds		start(void);
  * TIME
 \******************************************************************************/
 
-void			gettimeofday_or_die(t_timeval *tp, t_timezone *tzp);
+t_mseconds		get_timestamp(void);
 
 t_useconds		now(void);
 t_useconds		get_elapsed_time(t_useconds start);
-t_mseconds		get_timestamp(t_useconds start);
+
+void			gettimeofday_or_die(t_timeval *tp, t_timezone *tzp);
 
 /******************************************************************************\
  * UTILS

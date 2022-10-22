@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:26:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 22:51:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_useconds	get_elapsed_time(t_useconds start)
 	return (now() - start);
 }
 
-t_mseconds	get_timestamp(t_useconds start)
+t_mseconds	get_timestamp(void)
 {
-	return (get_elapsed_time(start) / MILLISECONDS_IN_A_SECOND);
+	return (get_elapsed_time(start()) / MILLISECONDS_IN_A_SECOND);
 }

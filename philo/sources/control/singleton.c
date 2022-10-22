@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:42:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/21 22:50:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ t_philosophers	*c(void)
 
 void	initialize_control(int argc, char **argv)
 {
-	c()->debug = false;
+	c()->start = now();
 	c()->argc = argc;
 	c()->argv = argv;
-	c()->start = now();
+	c()->debug = false;
 }
 
 void	deinitialize_control(void)
