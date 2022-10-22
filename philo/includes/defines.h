@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:52:18 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:31:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
 /******************************************************************************\
  * CONTROL
 \******************************************************************************/
+
+# define CONTROL_INSPECT "DEBUG:\n\
+	control = {\n\
+		debug = %d;\n\
+	\n\
+		start = %ld;\n\
+	\n\
+		number_of_philosophers = %d;\n\
+		time_to_die = %d;\n\
+		time_to_eat = %d;\n\
+		time_to_sleep = %d;\n\
+		number_of_times_each_philosopher_must_eat = %d;\n\
+		has_number_of_times_each_philosopher_must_eat = %d;\n\
+	}\n"
 
 /******************************************************************************\
  * ARGUMENTS

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 17:53:55 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 18:37:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,27 @@ char			**argv(void);
 t_useconds		start(void);
 
 int				number_of_philosophers(void);
-void			set_number_of_philosophers(int number);
+void			set_number_of_philosophers(void);
 
 int				time_to_die(void);
-void			set_time_to_die(int number);
+void			set_time_to_die(void);
 
 int				time_to_eat(void);
-void			set_time_to_eat(int number);
+void			set_time_to_eat(void);
 
 int				time_to_sleep(void);
-void			set_time_to_sleep(int number);
+void			set_time_to_sleep(void);
 
 int				number_of_times_each_philosopher_must_eat(void);
-void			set_number_of_times_each_philosopher_must_eat(int number);
+void			set_number_of_times_each_philosopher_must_eat(void);
 
 bool			has_number_of_times_each_philosopher_must_eat(void);
 void			enable_number_of_times_each_philosopher_must_eat(void);
 
 // t_list			**lalloc(void);
 // void			free_lalloc(void);
+
+void			inspect_control(void);
 
 /******************************************************************************\
  * TIME
@@ -95,6 +97,7 @@ bool			ft_is_whitespace(char character);
 char			*ft_skip_whitespace(char *str);
 bool			ft_is_plus_or_minus(char character);
 
+int				ft_atoi(const char *str);
 long			ft_atol(const char *str);
 
 #endif

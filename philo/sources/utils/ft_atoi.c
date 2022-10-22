@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   number_of_times_each_philosopher_must_eat.c        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/05 16:14:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 18:37:15 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2020/11/30 23:59:17 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/22 18:09:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	number_of_times_each_philosopher_must_eat(void)
+/*
+** Takes in a string and parses its chars into an int.
+*/
+int	ft_atoi(const char *str)
 {
-	return (c()->number_of_times_each_philosopher_must_eat);
-}
-
-void	set_number_of_times_each_philosopher_must_eat(void)
-{
-	if (argv()[5] == NULL)
-	{
-		print_error(NULL_EAT_ERR);
-		return ;
-	}
-	c()->number_of_times_each_philosopher_must_eat = ft_atoi(argv()[5]);
+	return ((int)ft_atol(str));
 }
