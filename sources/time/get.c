@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   now_ms.c                                           :+:      :+:    :+:   */
+/*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 15:59:07 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 17:47:47 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/21 22:26:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// clang-12 now_ms.c  && ./a.out
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
-
-typedef struct timeval	t_timeval;
-typedef struct timezone	t_timezone;
+#include <philo.h>
 
 void	gettimeofday_or_die(t_timeval *tp, t_timezone *tzp)
 {
@@ -32,16 +24,20 @@ void	gettimeofday_or_die(t_timeval *tp, t_timezone *tzp)
 	}
 }
 
-suseconds_t	now_ms(void)
+t_useconds	now(void)
 {
-	t_timeval	now;
+	t_timeval	_now;
 
-	gettimeofday_or_die(&now, NULL);
-	return (now.tv_usec + now.tv_sec * 1000000);
+	gettimeofday_or_die(&_now, NULL);
+	return (_now.tv_usec + _now.tv_sec * MICROSECONDS_IN_A_SECOND);
 }
 
-int	main(void)
+t_useconds	get_elapsed_time(t_useconds start)
 {
-	printf("now_ms() = %ld\n", now_ms());
-	return (EXIT_SUCCESS);
+	return (now() - start);
+}
+
+t_mseconds	get_timestamp(t_useconds start)
+{
+	return (get_elapsed_time(start) / MILLISECONDS_IN_A_SECOND);
 }
