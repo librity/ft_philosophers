@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 16:08:31 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/22 15:26:03 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/22 16:08:48 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	run(void)
+static bool	bad_argc(void)
 {
-	printf("THINKING...");
-}
-static void	cleanup(void)
-{
+	if (argc() < 5 || argc() > 6)
+	{
+		print_error(ARGC_ERR);
+		return (true);
+	}
+	return (false);
 }
 
-int	main(int argc, char **argv)
+bool	parsed_arguments(void)
 {
-	initialize_control(argc, argv);
-	if (!parsed_arguments())
-		return (EXIT_FAILURE);
-	run();
-	cleanup();
-	return (EXIT_SUCCESS);
+	if (bad_argc())
+		return (false);
+	return (true);
 }

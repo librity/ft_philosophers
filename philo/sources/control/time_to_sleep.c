@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   time_to_sleep.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 16:08:31 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/03/05 16:14:41 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/22 15:21:44 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	run(void)
+int	time_to_sleep(void)
 {
-	printf("THINKING...");
-}
-static void	cleanup(void)
-{
+	return (c()->time_to_sleep);
 }
 
-int	main(int argc, char **argv)
+void	set_time_to_sleep(int number)
 {
-	initialize_control(argc, argv);
-	if (!parsed_arguments())
-		return (EXIT_FAILURE);
-	run();
-	cleanup();
-	return (EXIT_SUCCESS);
+	c()->time_to_sleep = number;
 }

@@ -6,29 +6,26 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:51:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/22 16:01:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	gettimeofday_or_die(t_timeval *tp, t_timezone *tzp)
+void	gettimeofday_or_err(t_timeval *tp, t_timezone *tzp)
 {
 	int	result;
 
 	result = gettimeofday(tp, tzp);
 	if (result < 0)
-	{
-		printf("ERROR\n");
-		exit(EXIT_FAILURE);
-	}
+		print_error(GET_TIME_ERR);
 }
 
 t_useconds	now(void)
 {
 	t_timeval	_now;
 
-	gettimeofday_or_die(&_now, NULL);
+	gettimeofday_or_err(&_now, NULL);
 	return (_now.tv_usec + _now.tv_sec * MICROSECONDS_IN_A_SECOND);
 }
 
