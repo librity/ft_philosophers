@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 18:06:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:02:30 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,17 @@ void	initialize_control(int argc, char **argv)
 	c()->argv = argv;
 	c()->debug = false;
 	c()->has_number_of_times_each_philosopher_must_eat = false;
+	initialize_printf_mutex();
 }
 
-void	deinitialize_control(void)
+static void	deinitialize_control(void)
 {
 	ft_bzero(c(), sizeof(t_philosophers));
+}
+
+void	cleanup_control(void)
+{
+	// TODO: FREE ALLOCATED MEMORY
+	destroy_printf_mutex();
+	deinitialize_control();
 }

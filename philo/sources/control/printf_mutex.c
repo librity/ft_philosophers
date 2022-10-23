@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   has_number_of_times_each_philosopher_must_e        :+:      :+:    :+:   */
+/*   printf_mutex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 00:38:44 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 18:33:17 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/23 16:58:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-bool	has_number_of_times_each_philosopher_must_eat(void)
+t_mutex	*printf_mutex(void)
 {
-	return (c()->has_number_of_times_each_philosopher_must_eat);
+	return (&(c()->printf_mutex));
 }
 
-void	enable_number_of_times_each_philosopher_must_eat(void)
+void	initialize_printf_mutex(void)
 {
-	c()->has_number_of_times_each_philosopher_must_eat = true;
+	pthread_mutex_init(printf_mutex(), NULL);
+}
+
+void	destroy_printf_mutex(void)
+{
+	pthread_mutex_destroy(printf_mutex());
+}
+
+void	lock_printf_mutex(void)
+{
+	pthread_mutex_lock(printf_mutex());
+}
+
+void	unlock_printf_mutex(void)
+{
+	pthread_mutex_unlock(printf_mutex());
 }

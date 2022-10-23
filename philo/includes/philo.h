@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 18:37:35 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/23 17:10:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
-# include <pthread.h>
 
 # include <structs.h>
 # include <defines.h>
@@ -31,7 +30,7 @@
 
 t_philosophers	*c(void);
 void			initialize_control(int argc, char **argv);
-void			deinitialize_control(void);
+void			cleanup_control(void);
 
 bool			debug(void);
 void			enable_debug(void);
@@ -55,9 +54,14 @@ void			set_time_to_sleep(void);
 
 int				number_of_times_each_philosopher_must_eat(void);
 void			set_number_of_times_each_philosopher_must_eat(void);
-
 bool			has_number_of_times_each_philosopher_must_eat(void);
 void			enable_number_of_times_each_philosopher_must_eat(void);
+
+t_mutex			*printf_mutex(void);
+void			initialize_printf_mutex(void);
+void			destroy_printf_mutex(void);
+void			lock_printf_mutex(void);
+void			unlock_printf_mutex(void);
 
 // t_list			**lalloc(void);
 // void			free_lalloc(void);
@@ -82,6 +86,16 @@ void			gettimeofday_or_die(t_timeval *tp, t_timezone *tzp);
 bool			parsed_arguments(void);
 
 bool			is_positive_int_string(char *str);
+
+/******************************************************************************\
+ * LOG
+\******************************************************************************/
+
+void			log_took_fork(int philo_index);
+void			log_eating(int philo_index);
+void			log_sleeping(int philo_index);
+void			log_thinking(int philo_index);
+void			log_died(int philo_index);
 
 /******************************************************************************\
  * UTILS
