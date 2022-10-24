@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:26:03 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/22 18:38:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/24 15:27:31 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ bool	parsed_arguments(void)
 	if (bad_argv())
 		return (false);
 	set_arguments();
+	if (debug())
+		inspect_control();
 	return (true);
 }
