@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/23 17:10:14 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:32:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
  * CONTROL
 \******************************************************************************/
 
-t_philosophers	*c(void);
+t_philo			*c(void);
 void			initialize_control(int argc, char **argv);
 void			cleanup_control(void);
 
@@ -63,10 +63,22 @@ void			destroy_printf_mutex(void);
 void			lock_printf_mutex(void);
 void			unlock_printf_mutex(void);
 
-// t_list			**lalloc(void);
-// void			free_lalloc(void);
-
 void			inspect_control(void);
+
+/******************************************************************************\
+ * TABLE
+\******************************************************************************/
+
+void			initialize_table(void);
+void			destroy_table(void);
+
+t_mutex			*forks(void);
+void			initialize_forks(void);
+void			destroy_forks(void);
+
+t_philosopher	*philosophers(void);
+void			initialize_philosophers(void);
+void			destroy_philosophers(void);
 
 /******************************************************************************\
  * TIME
@@ -104,6 +116,8 @@ void			log_died(int philo_index);
 void			print_error(char *message);
 
 void			ft_bzero(void *s, size_t n);
+void			*ft_salloc(size_t size);
+void			*ft_scalloc(size_t nmemb, size_t size);
 
 size_t			ft_strlen(const char *s);
 int				ft_isdigit(int c);

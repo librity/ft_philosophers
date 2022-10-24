@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   core.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 16:30:02 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/24 16:32:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	run(void)
+void	initialize_table(void)
 {
-}
-static void	cleanup(void)
-{
-	destroy_table();
-	cleanup_control();
+	initialize_forks();
+	initialize_philosophers();
 }
 
-int	main(int argc, char **argv)
+void	destroy_table(void)
 {
-	initialize_control(argc, argv);
-	if (!parsed_arguments())
-		return (EXIT_FAILURE);
-	if (number_of_philosophers() <= 0)
-		return (EXIT_SUCCESS);
-	initialize_table();
-	run();
-	cleanup();
-	return (EXIT_SUCCESS);
+	destroy_forks();
+	destroy_philosophers();
 }
+

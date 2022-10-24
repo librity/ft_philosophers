@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 12:27:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:32:13 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,23 @@ typedef pthread_t		t_pthread;
 typedef pthread_mutex_t	t_mutex;
 
 /******************************************************************************\
+ * PHILOSOPHERS
+\******************************************************************************/
+
+typedef struct s_philosopher
+{
+	int					index;
+	t_pthread			id;
+
+	t_mutex				*left_fork;
+	t_mutex				*right_fork;
+}						t_philosopher;
+
+/******************************************************************************\
  * CONTROL
 \******************************************************************************/
 
-typedef struct s_philosophers
+typedef struct s_philo
 {
 	bool				debug;
 
@@ -57,20 +70,8 @@ typedef struct s_philosophers
 
 	t_mutex				printf_mutex;
 
-	// t_list					*lalloc;
-}						t_philosophers;
-
-/******************************************************************************\
- * PHILOSOPHERS
-\******************************************************************************/
-
-typedef struct s_philosopher
-{
-	int					index;
-	t_pthread			id;
-
-	t_mutex				*left_fork;
-	t_mutex				*right_fork;
-}						t_philosopher;
+	t_mutex				*forks;
+	t_philosopher		*philosophers;
+}						t_philo;
 
 #endif

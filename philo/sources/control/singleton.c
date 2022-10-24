@@ -6,15 +6,15 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/23 17:02:30 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:17:33 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-t_philosophers	*c(void)
+t_philo	*c(void)
 {
-	static t_philosophers	__control_instance;
+	static t_philo	__control_instance;
 
 	return (&__control_instance);
 }
@@ -31,12 +31,11 @@ void	initialize_control(int argc, char **argv)
 
 static void	deinitialize_control(void)
 {
-	ft_bzero(c(), sizeof(t_philosophers));
+	ft_bzero(c(), sizeof(t_philo));
 }
 
 void	cleanup_control(void)
 {
-	// TODO: FREE ALLOCATED MEMORY
 	destroy_printf_mutex();
 	deinitialize_control();
 }
