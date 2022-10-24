@@ -5,10 +5,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "(gdb) ./minishell",
+      "name": "(gdb) ./philo/philo",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/minishell",
+      "program": "${workspaceFolder}/philo/philo",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

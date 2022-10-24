@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 16:32:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:05:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ void			destroy_forks(void);
 t_philosopher	*philosophers(void);
 void			initialize_philosophers(void);
 void			destroy_philosophers(void);
+
+void			spawn_philosophers(void);
+void			join_philosophers(void);
+
+void			*run_philosopher(void *philo_vp);
 
 /******************************************************************************\
  * TIME

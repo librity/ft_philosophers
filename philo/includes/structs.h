@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 16:32:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:54:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ typedef long			t_useconds;
  * THREADS
 \******************************************************************************/
 
-typedef pthread_t		t_pthread;
+typedef pthread_t		t_tid;
 typedef pthread_mutex_t	t_mutex;
+typedef void			*(*t_troutine)(void *);
 
 /******************************************************************************\
  * PHILOSOPHERS
@@ -42,7 +43,7 @@ typedef pthread_mutex_t	t_mutex;
 typedef struct s_philosopher
 {
 	int					index;
-	t_pthread			id;
+	t_tid				id;
 
 	t_mutex				*left_fork;
 	t_mutex				*right_fork;

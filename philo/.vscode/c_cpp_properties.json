@@ -3,8 +3,7 @@
     {
       "name": "Linux",
       "includePath": [
-        "${workspaceFolder}/includes",
-        "${workspaceFolder}/libs/libft/includes",
+        "${workspaceFolder}/philo/includes",
         "~/.local/include"
       ],
       "defines": [],
