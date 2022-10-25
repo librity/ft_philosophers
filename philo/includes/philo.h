@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 17:05:00 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/25 14:39:39 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ void			*run_philosopher(void *philo_vp);
 \******************************************************************************/
 
 t_mseconds		get_timestamp(void);
-
 t_useconds		now(void);
 t_useconds		get_elapsed_time(t_useconds start);
-
 void			gettimeofday_or_die(t_timeval *tp, t_timezone *tzp);
+
+void			sleep_ms(int milliseconds);
 
 /******************************************************************************\
  * ARGUMENTS

@@ -13,6 +13,7 @@
     "*.gohtml": "html",
     "*.s": "plaintext",
     "random": "c",
-    "philo.h": "c"
+    "philo.h": "c",
+    "*.tcc": "c"
   }
 }
