@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/25 14:39:39 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/25 22:23:15 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,13 @@ bool			is_positive_int_string(char *str);
  * LOG
 \******************************************************************************/
 
-void			log_took_fork(int philo_index);
-void			log_eating(int philo_index);
-void			log_sleeping(int philo_index);
-void			log_thinking(int philo_index);
-void			log_died(int philo_index);
+void			log_took_fork(t_philosopher *philo);
+void			log_eating(t_philosopher *philo);
+void			log_sleeping(t_philosopher *philo);
+void			log_thinking(t_philosopher *philo);
+void			log_died(t_philosopher *philo);
+
+void			tlog(t_philosopher *philo, char *message);
 
 /******************************************************************************\
  * UTILS

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 16:03:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/25 22:25:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,18 @@
 \******************************************************************************/
 
 # define MILLISECONDS_IN_A_SECOND 1000
+# define MICROSECONDS_IN_A_MILLISECONDS 1000
 # define MICROSECONDS_IN_A_SECOND 1000000
+
+/******************************************************************************\
+ * LOG
+\******************************************************************************/
+
+# define TOOK_FORK_MSG "has taken a fork"
+# define EATING_MSG "is eating"
+# define SLEEPING_MSG "is sleeping"
+# define THINKING_MSG "is thinking"
+# define DIED_MSG "died"
 
 /******************************************************************************\
  * COLORS

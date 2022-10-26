@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sleep.c                                            :+:      :+:    :+:   */
+/*   tlog.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/25 22:14:58 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/23 16:39:17 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/25 22:23:07 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	sleep_ms(int milliseconds)
+void	tlog(t_philosopher *philo, char *message)
 {
-	int	result;
-
-	result = usleep(milliseconds * MICROSECONDS_IN_A_MILLISECONDS);
-	if (result != 0)
-		print_error(USLEEP_ERR);
+	lock_printf_mutex();
+	printf("%ld %d %s\n", get_timestamp(), philo->index + 1, message);
+	unlock_printf_mutex();
 }
