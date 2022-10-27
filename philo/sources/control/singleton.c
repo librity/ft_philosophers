@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:14:44 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:39:56 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	initialize_control(int argc, char **argv)
 	c()->start = now();
 	c()->argc = argc;
 	c()->argv = argv;
-	c()->debug = true;
+	c()->debug = false;
 	c()->has_number_of_times_each_philosopher_must_eat = false;
 	c()->someone_died = false;
 	initialize_someone_died_mutex();
