@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:29:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:44:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void			enable_debug(void);
 int				argc(void);
 char			**argv(void);
 
-t_useconds		start(void);
-t_useconds		ustart(void);
-t_mseconds		mstart(void);
+t_microsecs		start(void);
+t_microsecs		start_us(void);
+t_millisecs		start_ms(void);
 
 int				number_of_philosophers(void);
 void			set_number_of_philosophers(void);
@@ -59,7 +59,12 @@ void			set_number_of_times_each_philosopher_must_eat(void);
 bool			has_number_of_times_each_philosopher_must_eat(void);
 void			enable_number_of_times_each_philosopher_must_eat(void);
 
+t_philosopher	*philosophers(void);
 t_philosopher	*get_philosopher(int index);
+
+t_mutex			*forks(void);
+t_mutex			*get_fork(int index);
+
 t_tid			*get_waiter(void);
 
 t_mutex			*printf_mutex(void);
@@ -86,11 +91,9 @@ void			inspect_control(void);
 void			initialize_table(void);
 void			destroy_table(void);
 
-t_mutex			*forks(void);
 void			initialize_forks(void);
 void			destroy_forks(void);
 
-t_philosopher	*philosophers(void);
 void			initialize_philosophers(void);
 void			destroy_philosophers(void);
 
@@ -106,19 +109,18 @@ void			*run_waiter(void *_arg);
  * TIME
 \******************************************************************************/
 
-t_useconds		now(void);
-t_useconds		unow(void);
-t_mseconds		mnow(void);
+t_microsecs		now(void);
+t_microsecs		now_us(void);
+t_millisecs		mnow_ms(void);
 
-t_mseconds		get_timestamp(void);
-t_useconds		get_elapsed_time(t_useconds start);
-void			gettimeofday_or_err(t_timeval *tp, t_timezone *tzp);
+t_microsecs		get_elapsed_time_us(void);
+t_millisecs		get_elapsed_time_ms(void);
 
-void			sleep_us(t_useconds microseconds);
-void			sleep_ms(t_mseconds milliseconds);
+void			sleep_us(t_microsecs microseconds);
+void			sleep_ms(t_millisecs milliseconds);
 
-t_mseconds		u_to_mseconds(t_useconds useconds);
-t_mseconds		m_to_useconds(t_mseconds mseconds);
+t_millisecs		usecs_to_msecs(t_microsecs useconds);
+t_microsecs		msecs_to_usecs(t_millisecs mseconds);
 
 /******************************************************************************\
  * ARGUMENTS

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 18:18:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:33:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 typedef struct timeval	t_timeval;
 typedef struct timezone	t_timezone;
 
-typedef long			t_seconds;
-typedef long			t_mseconds;
-typedef long			t_useconds;
+typedef long			t_secs;
+typedef long			t_millisecs;
+typedef long			t_microsecs;
 
 /******************************************************************************\
  * THREADS
@@ -49,7 +49,7 @@ typedef struct s_philosopher
 	t_mutex				*right_fork;
 
 	t_mutex				mutex;
-	t_mseconds			last_meal;
+	t_millisecs			last_meal;
 }						t_philosopher;
 
 /******************************************************************************\
@@ -63,7 +63,7 @@ typedef struct s_philo
 	int					argc;
 	char				**argv;
 
-	t_useconds			start;
+	t_microsecs			start;
 
 	int					number_of_philosophers;
 	int					time_to_die;

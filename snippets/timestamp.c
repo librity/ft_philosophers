@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:59:07 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/21 22:26:37 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:33:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 typedef struct timeval t_timeval;
 typedef struct timezone t_timezone;
-typedef long t_seconds;
-typedef long t_mseconds;
-typedef long t_useconds;
+typedef long t_secs;
+typedef long t_millisecs;
+typedef long t_microsecs;
 
 #define SLEEP_SECONDS 5
 #define MILLISECONDS_IN_A_SECOND 1000
@@ -39,7 +39,7 @@ void gettimeofday_or_die(t_timeval *tp, t_timezone *tzp)
 	}
 }
 
-t_useconds now(void)
+t_microsecs now(void)
 {
 	t_timeval _now;
 
@@ -47,20 +47,20 @@ t_useconds now(void)
 	return (_now.tv_usec + _now.tv_sec * MICROSECONDS_IN_A_SECOND);
 }
 
-t_useconds get_elapsed_time(t_useconds start)
+t_microsecs get_elapsed_time(t_microsecs start)
 {
 	return (now() - start);
 }
 
-t_mseconds get_timestamp(t_useconds start)
+t_millisecs get_timestamp(t_microsecs start)
 {
 	return (get_elapsed_time(start) / MILLISECONDS_IN_A_SECOND);
 }
 
 int main(void)
 {
-	t_useconds start_us;
-	t_mseconds timestamp_ms;
+	t_microsecs start_us;
+	t_millisecs timestamp_ms;
 
 	start_us = now();
 	timestamp_ms = get_timestamp(start_us);

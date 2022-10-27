@@ -6,13 +6,13 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:24:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:31:11 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static bool	philo_starved(t_mseconds last_meal)
+static bool	philo_starved(t_millisecs last_meal)
 {
 	(void)last_meal;
 	return (false);
