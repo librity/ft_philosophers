@@ -6,15 +6,24 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:31:11 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:07:18 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static bool	philo_starved(t_millisecs last_meal)
+static bool	philo_starved(t_philosopher *philo)
 {
-	(void)last_meal;
+	t_millisecs	dead_in;
+
+	pthread_mutex_lock(&philo->mutex);
+	dead_in = philo->last_meal + time_to_die();
+	pthread_mutex_unlock(&philo->mutex);
+	if (dead_in >= get_elapsed_time_ms())
+	{
+		log_died(dead_in, philo);
+		return (true);
+	}
 	return (false);
 }
 
@@ -25,13 +34,11 @@ static bool	philo_died(int index)
 
 	philo = get_philosopher(index);
 	he_dead = false;
-	pthread_mutex_lock(&philo->mutex);
-	if (philo_starved(philo->last_meal))
+	if (philo_starved(philo))
 	{
-		he_dead = true;
 		enable_someone_died();
+		he_dead = true;
 	}
-	pthread_mutex_unlock(&philo->mutex);
 	return (he_dead);
 }
 

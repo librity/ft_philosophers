@@ -6,31 +6,11 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:37:07 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:01:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
-
-static void	initialize_philosopher(int index)
-{
-	t_philosopher	*philo;
-
-	philo = get_philosopher(index);
-	philo->index = index;
-	philo->left_fork = &forks()[index];
-	philo->right_fork = NULL;
-	philo->last_meal = start_ms();
-	pthread_mutex_init(&philo->mutex, NULL);
-	if (number_of_philosophers() == 1)
-		return ;
-	if (index == number_of_philosophers() - 1)
-	{
-		philo->right_fork = &forks()[0];
-		return ;
-	}
-	philo->right_fork = &forks()[index + 1];
-}
 
 static void	inspect_philosophers(void)
 {
@@ -49,6 +29,26 @@ static void	inspect_philosophers(void)
 		index++;
 	}
 	printf("\t]\n=============\n");
+}
+
+static void	initialize_philosopher(int index)
+{
+	t_philosopher	*philo;
+
+	philo = get_philosopher(index);
+	philo->index = index;
+	philo->left_fork = &forks()[index];
+	philo->right_fork = NULL;
+	philo->last_meal = 0;
+	pthread_mutex_init(&philo->mutex, NULL);
+	if (number_of_philosophers() == 1)
+		return ;
+	if (index == number_of_philosophers() - 1)
+	{
+		philo->right_fork = &forks()[0];
+		return ;
+	}
+	philo->right_fork = &forks()[index + 1];
 }
 
 void	initialize_philosophers(void)

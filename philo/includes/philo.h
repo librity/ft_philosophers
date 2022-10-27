@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:44:26 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:59:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ t_millisecs		start_ms(void);
 int				number_of_philosophers(void);
 void			set_number_of_philosophers(void);
 
-int				time_to_die(void);
+t_millisecs		time_to_die(void);
 void			set_time_to_die(void);
 
-int				time_to_eat(void);
+t_millisecs		time_to_eat(void);
 void			set_time_to_eat(void);
 
-int				time_to_sleep(void);
+t_millisecs		time_to_sleep(void);
 void			set_time_to_sleep(void);
 
 int				number_of_times_each_philosopher_must_eat(void);
@@ -111,7 +111,7 @@ void			*run_waiter(void *_arg);
 
 t_microsecs		now(void);
 t_microsecs		now_us(void);
-t_millisecs		mnow_ms(void);
+t_millisecs		now_ms(void);
 
 t_microsecs		get_elapsed_time_us(void);
 t_millisecs		get_elapsed_time_ms(void);
@@ -138,9 +138,11 @@ void			log_took_fork(t_philosopher *philo);
 void			log_eating(t_philosopher *philo);
 void			log_sleeping(t_philosopher *philo);
 void			log_thinking(t_philosopher *philo);
-void			log_died(t_philosopher *philo);
+void			log_died(t_millisecs time, t_philosopher *philo);
 
 void			tlog(t_philosopher *philo, char *message);
+void			tlog_time(t_millisecs time,
+					t_philosopher *philo, char *message);
 
 /******************************************************************************\
  * UTILS

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:33:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:58:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ typedef struct s_philo
 	t_microsecs			start;
 
 	int					number_of_philosophers;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
+	t_millisecs			time_to_die;
+	t_millisecs			time_to_eat;
+	t_millisecs			time_to_sleep;
 	bool				has_number_of_times_each_philosopher_must_eat;
 	int					number_of_times_each_philosopher_must_eat;
 

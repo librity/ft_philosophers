@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:14:19 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:59:48 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 		start = %ld;\n\
 	\n\
 		number_of_philosophers = %d;\n\
-		time_to_die = %d;\n\
-		time_to_eat = %d;\n\
-		time_to_sleep = %d;\n\
+		time_to_die = %ld;\n\
+		time_to_eat = %ld;\n\
+		time_to_sleep = %ld;\n\
 		number_of_times_each_philosopher_must_eat = %d;\n\
 		has_number_of_times_each_philosopher_must_eat = %d;\n\
 		someone_died = %d;\n\
