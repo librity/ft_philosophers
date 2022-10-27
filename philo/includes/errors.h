@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:27:39 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/25 14:35:46 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:26:04 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 \******************************************************************************/
 
 # define NULL_EAT_ERR "Can't set NULL number_of_times_each_philosopher_must_eat."
+# define GET_PHILO_ERR "Can't get philosopher with out of bounds index."
 
 /******************************************************************************\
  * TABLE

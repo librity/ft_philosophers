@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 16:54:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 18:18:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef struct s_philosopher
 
 	t_mutex				*left_fork;
 	t_mutex				*right_fork;
+
+	t_mutex				mutex;
+	t_mseconds			last_meal;
 }						t_philosopher;
 
 /******************************************************************************\
@@ -71,8 +74,12 @@ typedef struct s_philo
 
 	t_mutex				printf_mutex;
 
+	t_mutex				someone_died_mutex;
+	bool				someone_died;
+
 	t_mutex				*forks;
 	t_philosopher		*philosophers;
+	t_tid				waiter;
 }						t_philo;
 
 #endif

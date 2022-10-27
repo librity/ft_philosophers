@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get.c                                              :+:      :+:    :+:   */
+/*   now.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/26 16:36:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/26 16:34:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	gettimeofday_or_err(t_timeval *tp, t_timezone *tzp)
+t_useconds	now(void)
 {
-	int	result;
+	t_timeval	_now;
 
-	result = gettimeofday(tp, tzp);
-	if (result < 0)
-		print_error(GET_TIME_ERR);
+	gettimeofday_or_err(&_now, NULL);
+	return (_now.tv_usec + _now.tv_sec * MICROSECONDS_IN_A_SECOND);
 }
 
-t_mseconds	get_timestamp(void)
+t_useconds	unow(void)
 {
-	return (u_to_mseconds(now() - start()));
+	return (now());
+}
+
+t_mseconds	mnow(void)
+{
+	return (u_to_mseconds(now()));
 }

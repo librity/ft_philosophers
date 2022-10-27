@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/25 22:23:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:29:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int				argc(void);
 char			**argv(void);
 
 t_useconds		start(void);
+t_useconds		ustart(void);
+t_mseconds		mstart(void);
 
 int				number_of_philosophers(void);
 void			set_number_of_philosophers(void);
@@ -57,11 +59,23 @@ void			set_number_of_times_each_philosopher_must_eat(void);
 bool			has_number_of_times_each_philosopher_must_eat(void);
 void			enable_number_of_times_each_philosopher_must_eat(void);
 
+t_philosopher	*get_philosopher(int index);
+t_tid			*get_waiter(void);
+
 t_mutex			*printf_mutex(void);
 void			initialize_printf_mutex(void);
 void			destroy_printf_mutex(void);
 void			lock_printf_mutex(void);
 void			unlock_printf_mutex(void);
+
+bool			someone_died(void);
+void			enable_someone_died(void);
+
+t_mutex			*someone_died_mutex(void);
+void			initialize_someone_died_mutex(void);
+void			destroy_someone_died_mutex(void);
+void			lock_someone_died_mutex(void);
+void			unlock_someone_died_mutex(void);
 
 void			inspect_control(void);
 
@@ -82,19 +96,29 @@ void			destroy_philosophers(void);
 
 void			spawn_philosophers(void);
 void			join_philosophers(void);
+void			spawn_waiter(void);
+void			join_waiter(void);
 
 void			*run_philosopher(void *philo_vp);
+void			*run_waiter(void *_arg);
 
 /******************************************************************************\
  * TIME
 \******************************************************************************/
 
-t_mseconds		get_timestamp(void);
 t_useconds		now(void);
-t_useconds		get_elapsed_time(t_useconds start);
-void			gettimeofday_or_die(t_timeval *tp, t_timezone *tzp);
+t_useconds		unow(void);
+t_mseconds		mnow(void);
 
-void			sleep_ms(int milliseconds);
+t_mseconds		get_timestamp(void);
+t_useconds		get_elapsed_time(t_useconds start);
+void			gettimeofday_or_err(t_timeval *tp, t_timezone *tzp);
+
+void			sleep_us(t_useconds microseconds);
+void			sleep_ms(t_mseconds milliseconds);
+
+t_mseconds		u_to_mseconds(t_useconds useconds);
+t_mseconds		m_to_useconds(t_mseconds mseconds);
 
 /******************************************************************************\
  * ARGUMENTS

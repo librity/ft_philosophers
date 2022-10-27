@@ -1,55 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher.c                                      :+:      :+:    :+:   */
+/*   waiter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 17:57:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:24:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	think(t_philosopher *philo)
+static bool	philo_starved(t_mseconds last_meal)
 {
-	log_thinking(philo);
+	(void)last_meal;
+	return (false);
 }
 
-static void	sleeep(t_philosopher *philo)
-{
-	log_sleeping(philo);
-	sleep_ms(time_to_sleep());
-}
-
-static void	eat(t_philosopher *philo)
-{
-	if (philo->left_fork == NULL || philo->right_fork == NULL)
-		return ;
-	pthread_mutex_lock(philo->left_fork);
-	log_took_fork(philo);
-	pthread_mutex_lock(philo->right_fork);
-	log_took_fork(philo);
-	log_eating(philo);
-	sleep_ms(time_to_eat());
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
-	pthread_mutex_lock(&philo->mutex);
-	philo->last_meal = mnow();
-	pthread_mutex_unlock(&philo->mutex);
-}
-
-void	*run_philosopher(void *philo_vp)
+static bool	philo_died(int index)
 {
 	t_philosopher	*philo;
+	bool			he_dead;
 
-	philo = philo_vp;
+	philo = get_philosopher(index);
+	he_dead = false;
+	pthread_mutex_lock(&philo->mutex);
+	if (philo_starved(philo->last_meal))
+	{
+		he_dead = true;
+		enable_someone_died();
+	}
+	pthread_mutex_unlock(&philo->mutex);
+	return (he_dead);
+}
+
+static void	check_if_someone_died(void)
+{
+	int	index;
+
+	index = 0;
+	while (index < number_of_philosophers())
+	{
+		if (philo_died(index))
+			return ;
+		index++;
+	}
+}
+
+void	*run_waiter(void *_arg)
+{
+	(void)_arg;
 	while (true)
 	{
-		eat(philo);
-		sleeep(philo);
-		think(philo);
+		check_if_someone_died();
+		if (someone_died())
+			break ;
+		usleep(50);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 23:51:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:24:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ static void	initialize_philosopher(int index)
 {
 	t_philosopher	*philo;
 
-	philo = &c()->philosophers[index];
+	philo = get_philosopher(index);
 	philo->index = index;
 	philo->left_fork = &forks()[index];
 	philo->right_fork = NULL;
+	philo->last_meal = mstart();
+	pthread_mutex_init(&philo->mutex, NULL);
 	if (number_of_philosophers() == 1)
 		return ;
 	if (index == number_of_philosophers() - 1)
@@ -44,7 +46,7 @@ static void	inspect_philosophers(void)
 	index = 0;
 	while (index < number_of_philosophers())
 	{
-		philo = &c()->philosophers[index];
+		philo = get_philosopher(index);
 		printf("\t\t{ index: %d, left_fork: %p, right_fork: %p },\n",
 				philo->index,
 				philo->left_fork,

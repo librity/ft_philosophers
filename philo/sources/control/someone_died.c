@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get.c                                              :+:      :+:    :+:   */
+/*   someone_died.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/26 16:36:21 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/08/21 00:38:44 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/27 19:13:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	gettimeofday_or_err(t_timeval *tp, t_timezone *tzp)
+bool	someone_died(void)
 {
-	int	result;
+	bool	_someone_died;
 
-	result = gettimeofday(tp, tzp);
-	if (result < 0)
-		print_error(GET_TIME_ERR);
+	lock_someone_died_mutex();
+	_someone_died = c()->someone_died;
+	unlock_someone_died_mutex();
+	return (_someone_died);
 }
 
-t_mseconds	get_timestamp(void)
+void	enable_someone_died(void)
 {
-	return (u_to_mseconds(now() - start()));
+	lock_someone_died_mutex();
+	c()->someone_died = true;
+	unlock_someone_died_mutex();
 }
