@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/10/24 16:31:56 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/10/28 13:24:13 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -192,6 +192,8 @@ CC_VG = $(CC) \
 
 VG = valgrind
 
+HG_FLAGS = --tool=helgrind
+
 VG_FLAGS = --leak-check=full \
 	--show-leak-kinds=all \
 	--trace-children=yes
@@ -202,7 +204,11 @@ VG_LOG_FLAGS = $(VG_FLAGS) \
 	--verbose
 VG_LOG = valgrind_leaks.log
 
-VG_TARGET = ./philo 2 100 200 200
+# VG_TARGET = ./philo 2 100 200 200
+VG_TARGET = ./philo 4 210 100 100 7
+
+hg: vg_build
+	$(VG) $(HG_FLAGS) $(VG_TARGET)
 
 vg: vg_build
 	$(VG) $(VG_FLAGS) $(VG_TARGET)
