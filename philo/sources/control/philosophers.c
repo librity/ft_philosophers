@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:18:43 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:32:58 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:53:24 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_philosopher	*philosophers(void)
 
 t_philosopher	*get_philosopher(int index)
 {
-	if (index < 0 || index >= number_of_philosophers())
+	if (index < 0 || index >= philo_count())
 	{
 		print_error(GET_PHILO_ERR);
 		return (NULL);

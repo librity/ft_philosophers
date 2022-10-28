@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 20:05:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:55:33 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	eat(t_philosopher *philo)
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_lock(&philo->mutex);
-	philo->last_meal = get_elapsed_time_ms();
+	philo->dead_at = get_elapsed_time_ms() + time_to_die();
 	pthread_mutex_unlock(&philo->mutex);
 }
 

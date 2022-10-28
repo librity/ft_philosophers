@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:59:27 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 21:00:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_microsecs		start(void);
 t_microsecs		start_us(void);
 t_millisecs		start_ms(void);
 
+int				philo_count(void);
+void			set_philo_count(void);
 int				number_of_philosophers(void);
 void			set_number_of_philosophers(void);
 
@@ -58,6 +60,11 @@ int				number_of_times_each_philosopher_must_eat(void);
 void			set_number_of_times_each_philosopher_must_eat(void);
 bool			has_number_of_times_each_philosopher_must_eat(void);
 void			enable_number_of_times_each_philosopher_must_eat(void);
+
+int				target_meals(void);
+void			set_target_meals(void);
+bool			has_target_meals(void);
+void			enable_target_meals(void);
 
 t_philosopher	*philosophers(void);
 t_philosopher	*get_philosopher(int index);

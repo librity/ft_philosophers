@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 20:41:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:53:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static bool	philo_starved(t_philosopher *philo)
 {
-	t_millisecs	dead_in;
+	t_millisecs	dead_at;
 
 	pthread_mutex_lock(&philo->mutex);
-	dead_in = philo->last_meal + time_to_die();
+	dead_at = philo->dead_at;
 	pthread_mutex_unlock(&philo->mutex);
-	if (get_elapsed_time_ms() > dead_in)
+	if (get_elapsed_time_ms() > dead_at)
 	{
 		log_died(get_elapsed_time_ms(), philo);
 		return (true);
@@ -47,7 +47,7 @@ static void	check_if_someone_died(void)
 	int	index;
 
 	index = 0;
-	while (index < number_of_philosophers())
+	while (index < philo_count())
 	{
 		if (philo_died(index))
 			return ;

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:26:03 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 15:27:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:59:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static bool	bad_argv(void)
 
 static void	set_arguments(void)
 {
-	set_number_of_philosophers();
+	set_philo_count();
 	set_time_to_die();
 	set_time_to_eat();
 	set_time_to_sleep();
 	if (argv()[5] == NULL)
 		return ;
-	set_number_of_times_each_philosopher_must_eat();
-	enable_number_of_times_each_philosopher_must_eat();
+	set_target_meals();
+	enable_target_meals();
 }
 
 bool	parsed_arguments(void)

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:24:28 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:53:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	spawn_philosophers(void)
 	t_philosopher	*philo;
 
 	index = 0;
-	while (index < number_of_philosophers())
+	while (index < philo_count())
 	{
 		philo = get_philosopher(index);
 		result = pthread_create(&philo->id, NULL, &run_philosopher, philo);
@@ -36,7 +36,7 @@ void	join_philosophers(void)
 	t_philosopher	*philo;
 
 	index = 0;
-	while (index < number_of_philosophers())
+	while (index < philo_count())
 	{
 		philo = get_philosopher(index);
 		result = pthread_join(philo->id, NULL);

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 20:01:45 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/27 20:53:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	inspect_philosophers(void)
 
 	printf("=== DEBUG ===\n\tphilosophers = [\n");
 	index = 0;
-	while (index < number_of_philosophers())
+	while (index < philo_count())
 	{
 		philo = get_philosopher(index);
 		printf("\t\t{ index: %d, left_fork: %p, right_fork: %p },\n",
@@ -39,11 +39,11 @@ static void	initialize_philosopher(int index)
 	philo->index = index;
 	philo->left_fork = &forks()[index];
 	philo->right_fork = NULL;
-	philo->last_meal = 0;
+	philo->dead_at = time_to_die();
 	pthread_mutex_init(&philo->mutex, NULL);
-	if (number_of_philosophers() == 1)
+	if (philo_count() == 1)
 		return ;
-	if (index == number_of_philosophers() - 1)
+	if (index == philo_count() - 1)
 	{
 		philo->right_fork = &forks()[0];
 		return ;
@@ -55,10 +55,9 @@ void	initialize_philosophers(void)
 {
 	int	index;
 
-	c()->philosophers = ft_scalloc(sizeof(t_philosopher),
-									number_of_philosophers());
+	c()->philosophers = ft_scalloc(sizeof(t_philosopher), philo_count());
 	index = 0;
-	while (index < number_of_philosophers())
+	while (index < philo_count())
 	{
 		initialize_philosopher(index);
 		index++;
