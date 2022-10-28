@@ -189,8 +189,8 @@ def cpu_warning():
 
 
 def make_all_binaries(bin_path):
-    subprocess.run(["make", "-C", f"{bin_path}/philo/"])
-    subprocess.run(["make", "-C", f"{bin_path}/philo_bonus/"])
+    subprocess.run(["make", "-C", f"{bin_path}/philo/", "re"])
+    subprocess.run(["make", "-C", f"{bin_path}/philo_bonus/", "re"])
 
 
 def print_test_description():
