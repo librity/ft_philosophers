@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:18:43 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 20:53:17 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:48:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ t_mutex	*get_fork(int index)
 		return (NULL);
 	}
 	return (&c()->forks[index]);
+}
+
+t_mutex	*get_last_fork(void)
+{
+	return (get_fork(philo_count() - 1));
 }

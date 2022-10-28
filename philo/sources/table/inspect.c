@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.c                                     :+:      :+:    :+:   */
+/*   inspect.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/27 19:18:43 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 17:06:56 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/28 15:21:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-t_philosopher	*philosophers(void)
+void	inspect_philosophers(void)
 {
-	return (c()->philosophers);
-}
+	int				index;
+	t_philosopher	*philo;
 
-t_philosopher	*get_philosopher(int index)
-{
-	if (index < 0 || index >= philo_count())
+	printf(PHILO_INSPECT_MSG_1);
+	index = 0;
+	while (index < philo_count())
 	{
-		print_error(GET_PHILO_ERR);
-		return (NULL);
+		philo = get_philosopher(index);
+		printf(PHILO_INSPECT_MSG_2,
+			philo->index,
+			philo->left_fork,
+			philo->right_fork,
+			philo->dead_at,
+			philo->meals_eaten);
+		index++;
 	}
-	return (&c()->philosophers[index]);
-}
-
-bool	is_first_philosopher(t_philosopher *philo)
-{
-	return (philo->index == 0);
-}
-
-bool	is_last_philosopher(t_philosopher *philo)
-{
-	return (philo->index == philo_count() - 1);
+	printf(PHILO_INSPECT_MSG_3);
 }

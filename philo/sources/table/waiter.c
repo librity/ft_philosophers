@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 13:12:10 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:43:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static bool	philo_starved(t_philosopher *philo)
 
 	pthread_mutex_lock(&philo->mutex);
 	dead_at = philo->dead_at;
-	// dead_at = philo->last_meal + time_to_die();
 	pthread_mutex_unlock(&philo->mutex);
 	_now = get_elapsed_time_ms();
 	if (_now >= dead_at)
@@ -58,12 +57,14 @@ static void	check_if_someone_died(void)
 	}
 }
 
-static bool	all_ate_last_meal(void)
+static bool	all_ate_target_meals(void)
 {
 	int				index;
 	t_philosopher	*philo;
 	int				meals_eaten;
 
+	if (!has_target_meals())
+		return (false);
 	index = 0;
 	while (index < philo_count())
 	{
@@ -86,10 +87,9 @@ void	*run_waiter(void *_arg)
 		check_if_someone_died();
 		if (someone_died())
 			return (NULL);
-		if (all_ate_last_meal())
+		if (all_ate_target_meals())
 			return (NULL);
-		// sleep_ms(1);
-		sleep_us(900);
+		sleep_us(WAITER_TIMEOUT_MICROSECS);
 	}
 	return (NULL);
 }

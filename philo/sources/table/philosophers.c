@@ -6,29 +6,31 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 13:01:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:07:20 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	inspect_philosophers(void)
+static void	set_forks(t_philosopher *philo)
 {
-	int				index;
-	t_philosopher	*philo;
+	int	index;
 
-	printf("=== DEBUG ===\n\tphilosophers = [\n");
-	index = 0;
-	while (index < philo_count())
+	index = philo->index;
+	philo->left_fork = &forks()[index];
+	if (only_one_philosopher())
 	{
-		philo = get_philosopher(index);
-		printf("\t\t{ index: %d, left_fork: %p, right_fork: %p },\n",
-				philo->index,
-				philo->left_fork,
-				philo->right_fork);
-		index++;
+		philo->right_fork = NULL;
+		return ;
 	}
-	printf("\t]\n=============\n");
+	if (is_last_philosopher(philo))
+	{
+		// philo->right_fork = philo->left_fork;
+		// philo->left_fork = &forks()[0];
+		philo->right_fork = &forks()[0];
+		return ;
+	}
+	philo->right_fork = &forks()[index + 1];
 }
 
 static void	initialize_philosopher(int index)
@@ -37,20 +39,10 @@ static void	initialize_philosopher(int index)
 
 	philo = get_philosopher(index);
 	philo->index = index;
-	philo->left_fork = &forks()[index];
-	philo->right_fork = NULL;
 	philo->dead_at = time_to_die();
-	// philo->last_meal = 0;
 	philo->meals_eaten = 0;
 	pthread_mutex_init(&philo->mutex, NULL);
-	if (philo_count() == 1)
-		return ;
-	if (index == philo_count() - 1)
-	{
-		philo->right_fork = &forks()[0];
-		return ;
-	}
-	philo->right_fork = &forks()[index + 1];
+	set_forks(philo);
 }
 
 void	initialize_philosophers(void)

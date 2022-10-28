@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 21:00:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:07:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int				philo_count(void);
 void			set_philo_count(void);
 int				number_of_philosophers(void);
 void			set_number_of_philosophers(void);
+bool			only_one_philosopher(void);
 
 t_millisecs		time_to_die(void);
 void			set_time_to_die(void);
@@ -68,9 +69,12 @@ void			enable_target_meals(void);
 
 t_philosopher	*philosophers(void);
 t_philosopher	*get_philosopher(int index);
+bool			is_first_philosopher(t_philosopher *philo);
+bool			is_last_philosopher(t_philosopher *philo);
 
 t_mutex			*forks(void);
 t_mutex			*get_fork(int index);
+t_mutex			*get_last_fork(void);
 
 t_tid			*get_waiter(void);
 
@@ -103,6 +107,7 @@ void			destroy_forks(void);
 
 void			initialize_philosophers(void);
 void			destroy_philosophers(void);
+void			inspect_philosophers(void);
 
 void			spawn_philosophers(void);
 void			join_philosophers(void);
@@ -110,6 +115,8 @@ void			spawn_waiter(void);
 void			join_waiter(void);
 
 void			*run_philosopher(void *philo_vp);
+bool			ate_and_left(t_philosopher *philo);
+
 void			*run_waiter(void *_arg);
 
 /******************************************************************************\
