@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 13:01:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 13:12:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,26 @@ static void	check_if_someone_died(void)
 	}
 }
 
+static bool	all_ate_last_meal(void)
+{
+	int				index;
+	t_philosopher	*philo;
+	int				meals_eaten;
+
+	index = 0;
+	while (index < philo_count())
+	{
+		philo = get_philosopher(index);
+		pthread_mutex_lock(&philo->mutex);
+		meals_eaten = philo->meals_eaten;
+		pthread_mutex_unlock(&philo->mutex);
+		if (meals_eaten < target_meals())
+			return (false);
+		index++;
+	}
+	return (true);
+}
+
 void	*run_waiter(void *_arg)
 {
 	(void)_arg;
@@ -65,8 +85,11 @@ void	*run_waiter(void *_arg)
 	{
 		check_if_someone_died();
 		if (someone_died())
-			break ;
-		sleep_ms(1);
+			return (NULL);
+		if (all_ate_last_meal())
+			return (NULL);
+		// sleep_ms(1);
+		sleep_us(900);
 	}
 	return (NULL);
 }
