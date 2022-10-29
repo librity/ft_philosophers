@@ -67,3 +67,6 @@ dkms.conf
 
 # Examples
 examples/example.c
+
+# Tests
+scripts/test_results
