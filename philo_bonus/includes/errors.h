@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:27:39 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 14:18:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:08:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,9 @@ number_of_times_each_philosopher_must_eat."
 \******************************************************************************/
 
 # define SALLOC_ERR "Can't allocate required memory."
+
+# define SEM_OPEN_ERR "Can't open required semaphore."
+# define SEM_CLOSE_ERR "Can't close required semaphore."
+# define SEM_UNLINK_ERR "Can't unlink required semaphore."
 
 #endif

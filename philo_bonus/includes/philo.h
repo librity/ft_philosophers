@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 14:15:46 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:09:31 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdio.h>
+# include <fcntl.h>
 
 # include <structs.h>
 # include <defines.h>
@@ -73,10 +74,7 @@ bool			is_first_philosopher(t_philosopher *philo);
 bool			is_last_philosopher(t_philosopher *philo);
 
 int				fork_count(void);
-t_mutex			*forks(void);
-t_mutex			*get_fork(int index);
-t_mutex			*get_first_fork(void);
-t_mutex			*get_last_fork(void);
+t_semaphore		*forks(void);
 
 t_tid			*get_waiter(void);
 
@@ -154,10 +152,14 @@ void			tlog_time(t_millisecs time,
  * UTILS
 \******************************************************************************/
 
-int				spawn_thread(t_tid *id, t_troutine routine, void *argument);
-int				join_thread(t_tid id);
+void			die(char *message);
 
-void			print_error(char *message);
+void			spawn_thread(t_tid *id, t_troutine routine, void *argument);
+void			join_thread(t_tid id);
+
+t_semaphore		*open_semaphore(char *name, unsigned int init_value);
+void			close_semaphore(t_semaphore *close_me);
+void			unlink_semaphore(char *name);
 
 void			ft_bzero(void *s, size_t n);
 void			*ft_salloc(size_t size);
