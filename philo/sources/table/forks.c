@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 22:02:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 08:49:54 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	allocate_forks(void)
 {
 	t_mutex	*_forks;
 
-	_forks = ft_scalloc(sizeof(t_mutex), fork_count());
+	_forks = ft_calloc(sizeof(t_mutex), fork_count());
 	c()->forks = _forks;
 }
 

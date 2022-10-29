@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 22:00:32 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 08:49:54 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	allocate_philosophers(void)
 {
 	t_philosopher	*_philosophers;
 
-	_philosophers = ft_scalloc(sizeof(t_philosopher), philo_count());
+	_philosophers = ft_calloc(sizeof(t_philosopher), philo_count());
 	c()->philosophers = _philosophers;
 }
 

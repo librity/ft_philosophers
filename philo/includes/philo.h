@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 21:56:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 08:49:54 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void			print_error(char *message);
 
 void			ft_bzero(void *s, size_t n);
 void			*ft_salloc(size_t size);
-void			*ft_scalloc(size_t nmemb, size_t size);
+void			*ft_calloc(size_t nmemb, size_t size);
 
 size_t			ft_strlen(const char *s);
 int				ft_isdigit(int c);
