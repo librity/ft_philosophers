@@ -6,17 +6,25 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 20:53:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:00:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
+static void	allocate_forks(void)
+{
+	t_mutex	*_forks;
+
+	_forks = ft_scalloc(sizeof(t_mutex), fork_count());
+	c()->forks = _forks;
+}
+
 void	initialize_forks(void)
 {
 	int	index;
 
-	c()->forks = ft_scalloc(sizeof(t_mutex), philo_count());
+	allocate_forks();
 	index = 0;
 	while (index < philo_count())
 	{

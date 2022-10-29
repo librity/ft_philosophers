@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 16:32:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:49:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,3 @@ void	destroy_table(void)
 	destroy_forks();
 	destroy_philosophers();
 }
-

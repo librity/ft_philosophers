@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 17:07:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:56:57 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,10 @@ t_philosopher	*get_philosopher(int index);
 bool			is_first_philosopher(t_philosopher *philo);
 bool			is_last_philosopher(t_philosopher *philo);
 
+int				fork_count(void);
 t_mutex			*forks(void);
 t_mutex			*get_fork(int index);
+t_mutex			*get_first_fork(void);
 t_mutex			*get_last_fork(void);
 
 t_tid			*get_waiter(void);

@@ -6,11 +6,16 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:18:43 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 16:48:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:57:03 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+int	fork_count(void)
+{
+	return (philo_count());
+}
 
 t_mutex	*forks(void)
 {
@@ -25,6 +30,11 @@ t_mutex	*get_fork(int index)
 		return (NULL);
 	}
 	return (&c()->forks[index]);
+}
+
+t_mutex	*get_first_fork(void)
+{
+	return (get_fork(0));
 }
 
 t_mutex	*get_last_fork(void)

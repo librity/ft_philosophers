@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 17:04:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:34:06 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	sleeep(t_philosopher *philo)
 
 void	delay_odd_ones(t_philosopher *philo)
 {
-	if (philo->index % 2 == 1)
+	if (philo->index % 2 == 1 || is_last_philosopher(philo))
 		sleep_us(ODD_ONES_DELAY_MICROSECS);
 }
 
@@ -34,7 +34,7 @@ void	*run_philosopher(void *philo_vp)
 	t_philosopher	*philo;
 
 	philo = philo_vp;
-	// delay_odd_ones(philo);
+	delay_odd_ones(philo);
 	while (true)
 	{
 		if (someone_died())

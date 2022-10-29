@@ -6,31 +6,22 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 17:07:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:00:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	set_forks(t_philosopher *philo)
+static t_mutex	*resolve_right_fork(t_philosopher *philo)
 {
 	int	index;
 
 	index = philo->index;
-	philo->left_fork = &forks()[index];
 	if (only_one_philosopher())
-	{
-		philo->right_fork = NULL;
-		return ;
-	}
+		return (NULL);
 	if (is_last_philosopher(philo))
-	{
-		// philo->right_fork = philo->left_fork;
-		// philo->left_fork = &forks()[0];
-		philo->right_fork = &forks()[0];
-		return ;
-	}
-	philo->right_fork = &forks()[index + 1];
+		return (get_first_fork());
+	return (get_fork(index + 1));
 }
 
 static void	initialize_philosopher(int index)
@@ -42,14 +33,23 @@ static void	initialize_philosopher(int index)
 	philo->dead_at = time_to_die();
 	philo->meals_eaten = 0;
 	pthread_mutex_init(&philo->mutex, NULL);
-	set_forks(philo);
+	philo->left_fork = get_fork(index);
+	philo->right_fork = resolve_right_fork(philo);
+}
+
+static void	allocate_philosophers(void)
+{
+	t_philosopher	*_philosophers;
+
+	_philosophers = ft_scalloc(sizeof(t_philosopher), philo_count());
+	c()->philosophers = _philosophers;
 }
 
 void	initialize_philosophers(void)
 {
 	int	index;
 
-	c()->philosophers = ft_scalloc(sizeof(t_philosopher), philo_count());
+	allocate_philosophers();
 	index = 0;
 	while (index < philo_count())
 	{

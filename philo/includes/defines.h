@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 16:58:45 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 17:39:45 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
  * TABLE
 \******************************************************************************/
 
-# define ODD_ONES_DELAY_MICROSECS 500
-# define WAITER_TIMEOUT_MICROSECS 500
+# define ODD_ONES_DELAY_MICROSECS 100
+# define WAITER_TIMEOUT_MICROSECS 9000
 
 # define PHILO_INSPECT_MSG_1 "=== DEBUG ===\n\tphilosophers = [\n"
 # define PHILO_INSPECT_MSG_2 "\t\t{ index: %d, left_fork: %p, right_fork: %p, \

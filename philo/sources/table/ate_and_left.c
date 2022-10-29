@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 16:50:26 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 21:49:20 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	ate_and_left(t_philosopher *philo)
 {
-	bool ate_last_meal;
+	bool	ate_last_meal;
 
 	if (philo->left_fork == NULL || philo->right_fork == NULL)
 		return (false);
