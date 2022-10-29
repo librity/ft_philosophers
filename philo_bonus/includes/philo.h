@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 18:05:52 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:44:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ bool			is_last_philosopher(t_philosopher *philo);
 
 t_semaphore		*forks(void);
 int				total_forks(void);
-long			fork_count(void);
+int				fork_count(void);
 void			grab_fork(void);
 void			return_fork(void);
 
@@ -90,6 +90,9 @@ void			enable_someone_died(void);
 
 void			initialize_table(void);
 void			destroy_table(void);
+
+void			initialize_someone_died(void);
+void			destroy_someone_died(void);
 
 void			initialize_forks(void);
 void			destroy_forks(void);
@@ -162,8 +165,11 @@ void			join_thread(t_tid id);
 t_semaphore		*open_semaphore(char *name, unsigned int init_value);
 void			close_semaphore(t_semaphore *close_me);
 void			unlink_semaphore(char *name);
+
 void			wait_semaphore(t_semaphore *wait_me);
 void			post_semaphore(t_semaphore *post_me);
+int				get_semaphore(t_semaphore *get_me);
+void			set_semaphore(t_semaphore *set_me, int value);
 
 t_pid			fork_or_die(void);
 void			waitpid_or_die(t_pid pid, int *status, int options);

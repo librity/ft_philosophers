@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:18:43 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 17:53:13 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:36:41 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_semaphore	*forks(void)
 	return (c()->forks);
 }
 
-long	fork_count(void)
+int	fork_count(void)
 {
-	return (*(long *)c()->forks);
+	return (get_semaphore(c()->forks));
 }
 
 void	grab_fork(void)

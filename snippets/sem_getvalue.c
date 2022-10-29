@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   someone_died.c                                     :+:      :+:    :+:   */
+/*   sem_getvalue.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 00:38:44 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 19:44:03 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/29 14:16:14 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/29 19:10:37 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
+// clang-12 sem_getvalue.c  && ./a.out
 
-bool	someone_died(void)
+#include <semaphore.h>
+#include <stdio.h>
+
+int main(void)
 {
-	int	value;
+	sem_t	my_semaphore;
+	int		value;
 
-	value = get_semaphore(c()->someone_died);
-	return (value > 0);
-}
+	sem_init(&my_semaphore, 0, 10);
+	sem_getvalue(&my_semaphore, &value);
+	printf("The initial value of the semaphore is %d\n", value);
+	sem_wait(&my_semaphore);
+	sem_getvalue(&my_semaphore, &value);
+	printf("The value of the semaphore after the wait is %d\n", value);
 
-void	enable_someone_died(void)
-{
-	post_semaphore(c()->someone_died);
+	return (0);
 }

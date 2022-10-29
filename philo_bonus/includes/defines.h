@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 18:01:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:39:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 \******************************************************************************/
 
 # define FORKS_SEMAPHORE_NAME "/philo_bonus_forks"
+# define SOMEONE_DIED_SEMAPHORE_NAME "/philo_bonus_someone_died"
 
 # define SEMAPHORE_PERMISSION 0660
 
