@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 16:04:56 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:05:52 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <signal.h>
+# include <sys/wait.h>
 
 # include <structs.h>
 # include <defines.h>
@@ -44,8 +45,8 @@ t_microsecs		start(void);
 t_microsecs		start_us(void);
 t_millisecs		start_ms(void);
 
-int				philo_count(void);
-void			set_philo_count(void);
+int				total_philos(void);
+void			set_total_philos(void);
 int				number_of_philosophers(void);
 void			set_number_of_philosophers(void);
 bool			only_one_philosopher(void);
@@ -74,23 +75,18 @@ t_philosopher	*get_philosopher(int index);
 bool			is_first_philosopher(t_philosopher *philo);
 bool			is_last_philosopher(t_philosopher *philo);
 
-int				fork_count(void);
 t_semaphore		*forks(void);
+int				total_forks(void);
+long			fork_count(void);
 void			grab_fork(void);
 void			return_fork(void);
-
-t_tid			*get_waiter(void);
 
 bool			someone_died(void);
 void			enable_someone_died(void);
 
-void			inspect_control(void);
-
 /******************************************************************************\
  * TABLE
 \******************************************************************************/
-
-bool			handled_single_philosopher(void);
 
 void			initialize_table(void);
 void			destroy_table(void);
@@ -100,12 +96,9 @@ void			destroy_forks(void);
 
 void			initialize_philosophers(void);
 void			destroy_philosophers(void);
-void			inspect_philosophers(void);
 
 void			spawn_philosophers(void);
 void			join_philosophers(void);
-void			spawn_waiter(void);
-void			join_waiter(void);
 
 void			*run_philosopher(void *philo_vp);
 bool			ate_and_left(t_philosopher *philo);
@@ -133,7 +126,7 @@ t_microsecs		msecs_to_usecs(t_millisecs mseconds);
  * ARGUMENTS
 \******************************************************************************/
 
-bool			parse_arguments(void);
+void			parse_arguments(void);
 
 bool			is_positive_int_string(char *str);
 

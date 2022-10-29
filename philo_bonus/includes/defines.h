@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 16:06:46 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:01:15 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,6 @@
 /******************************************************************************\
  * CONTROL
 \******************************************************************************/
-
-# define CONTROL_INSPECT "=== DEBUG ===\n\
-	control: {\n\
-		debug: %d;\n\
-	\n\
-		start: %ld;\n\
-	\n\
-		number_of_philosophers: %d;\n\
-		time_to_die: %ld;\n\
-		time_to_eat: %ld;\n\
-		time_to_sleep: %ld;\n\
-		number_of_times_each_philosopher_must_eat: %d;\n\
-		has_number_of_times_each_philosopher_must_eat: %d;\n\
-		someone_died: %d;\n\
-	}\n\
-=============\n"
 
 /******************************************************************************\
  * ARGUMENTS
@@ -45,11 +29,6 @@
 
 # define ODD_ONES_DELAY_MICROSECS 100
 # define WAITER_TIMEOUT_MICROSECS 9000
-
-# define PHILO_INSPECT_MSG_1 "=== DEBUG ===\n\tphilosophers = [\n"
-# define PHILO_INSPECT_MSG_2 "\t\t{ index: %d, left_fork: %p, right_fork: %p, \
-dead_at: %ld, meals_eaten: %d },\n"
-# define PHILO_INSPECT_MSG_3 "\t]\n=============\n"
 
 /******************************************************************************\
  * SEMAPHORES

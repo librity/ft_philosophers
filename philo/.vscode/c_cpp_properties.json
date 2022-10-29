@@ -4,6 +4,7 @@
       "name": "Linux",
       "includePath": [
         "${workspaceFolder}/philo/includes",
+        "${workspaceFolder}/includes",
         "~/.local/include"
       ],
       "defines": [],

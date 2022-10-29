@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:26:03 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:19:43 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:02:20 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	validate_argv(void)
 
 static void	set_arguments(void)
 {
-	set_philo_count();
+	set_total_philos();
 	set_time_to_die();
 	set_time_to_eat();
 	set_time_to_sleep();
@@ -48,6 +48,4 @@ void	parse_arguments(void)
 	validate_argc();
 	validate_argv();
 	set_arguments();
-	if (debug())
-		inspect_control();
 }

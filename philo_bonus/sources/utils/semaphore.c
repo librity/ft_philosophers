@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:28:13 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:25:53 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:08:13 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 t_semaphore	*open_semaphore(char *name, unsigned int init_value)
 {
-	t_semaphore	*new_semaphore;
+	t_semaphore	*new;
 
-	new_semaphore = sem_open(FORKS_SEMAPHORE_NAME, O_CREAT,
-			SEMAPHORE_PERMISSION, init_value);
-	if (new_semaphore == SEM_FAILED)
+	new = sem_open(name, O_CREAT, SEMAPHORE_PERMISSION, init_value);
+	if (new == SEM_FAILED)
 		die(SEM_OPEN_ERR);
-	return (new_semaphore);
+	return (new);
 }
 
 void	close_semaphore(t_semaphore *close_me)

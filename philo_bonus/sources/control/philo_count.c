@@ -6,18 +6,18 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:14:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 15:16:16 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 17:49:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	philo_count(void)
+int	total_philos(void)
 {
 	return (number_of_philosophers());
 }
 
-void	set_philo_count(void)
+void	set_total_philos(void)
 {
 	set_number_of_philosophers();
 }

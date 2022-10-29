@@ -6,42 +6,27 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 13:03:22 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 18:01:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
-
-static t_mutex	*resolve_right_fork(t_philosopher *philo)
-{
-	int	index;
-
-	index = philo->index;
-	if (only_one_philosopher())
-		return (NULL);
-	if (is_last_philosopher(philo))
-		return (get_first_fork());
-	return (get_fork(index + 1));
-}
 
 static void	initialize_philosopher(int index)
 {
 	t_philosopher	*philo;
 
 	philo = get_philosopher(index);
-	init_mutex(&philo->mutex);
 	philo->index = index;
 	philo->dead_at = time_to_die();
 	philo->meals_eaten = 0;
-	philo->left_fork = get_fork(index);
-	philo->right_fork = resolve_right_fork(philo);
 }
 
 static void	allocate_philosophers(void)
 {
 	t_philosopher	*_philosophers;
 
-	_philosophers = ft_calloc(sizeof(t_philosopher), philo_count());
+	_philosophers = ft_calloc(sizeof(t_philosopher), total_philos());
 	c()->philosophers = _philosophers;
 }
 
@@ -51,13 +36,11 @@ void	initialize_philosophers(void)
 
 	allocate_philosophers();
 	index = 0;
-	while (index < philo_count())
+	while (index < total_philos())
 	{
 		initialize_philosopher(index);
 		index++;
 	}
-	if (debug())
-		inspect_philosophers();
 }
 
 void	destroy_philosophers(void)
@@ -66,10 +49,9 @@ void	destroy_philosophers(void)
 	int				index;
 
 	index = 0;
-	while (index < philo_count())
+	while (index < total_philos())
 	{
 		philo = get_philosopher(index);
-		destroy_mutex(&philo->mutex);
 		index++;
 	}
 	free(c()->philosophers);
