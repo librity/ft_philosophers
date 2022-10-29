@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 17:34:06 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:12:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	*run_philosopher(void *philo_vp)
 	while (true)
 	{
 		if (someone_died())
-			return (NULL);
+			break ;
 		if (ate_and_left(philo))
-			return (NULL);
+			break ;
 		if (someone_died())
-			return (NULL);
+			break ;
 		sleeep(philo);
 		if (someone_died())
-			return (NULL);
+			break ;
 		think(philo);
 	}
 	return (NULL);

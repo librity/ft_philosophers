@@ -6,17 +6,19 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 15:43:53 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/28 22:12:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static bool	philo_starved(t_philosopher *philo)
+static bool	philo_died(int index)
 {
-	t_millisecs	dead_at;
-	t_millisecs	_now;
+	t_philosopher	*philo;
+	t_millisecs		dead_at;
+	t_millisecs		_now;
 
+	philo = get_philosopher(index);
 	pthread_mutex_lock(&philo->mutex);
 	dead_at = philo->dead_at;
 	pthread_mutex_unlock(&philo->mutex);
@@ -24,27 +26,13 @@ static bool	philo_starved(t_philosopher *philo)
 	if (_now >= dead_at)
 	{
 		log_died(_now, philo);
+		enable_someone_died();
 		return (true);
 	}
 	return (false);
 }
 
-static bool	philo_died(int index)
-{
-	t_philosopher	*philo;
-	bool			he_dead;
-
-	philo = get_philosopher(index);
-	he_dead = false;
-	if (philo_starved(philo))
-	{
-		enable_someone_died();
-		he_dead = true;
-	}
-	return (he_dead);
-}
-
-static void	check_if_someone_died(void)
+static bool	anyone_died(void)
 {
 	int	index;
 
@@ -52,27 +40,36 @@ static void	check_if_someone_died(void)
 	while (index < philo_count())
 	{
 		if (philo_died(index))
-			return ;
+			return (true);
 		index++;
 	}
+	return (false);
+}
+
+static bool	philo_ate_target_meals(int index)
+{
+	t_philosopher	*philo;
+	int				meals_eaten;
+
+	philo = get_philosopher(index);
+	pthread_mutex_lock(&philo->mutex);
+	meals_eaten = philo->meals_eaten;
+	pthread_mutex_unlock(&philo->mutex);
+	if (meals_eaten >= target_meals())
+		return (true);
+	return (false);
 }
 
 static bool	all_ate_target_meals(void)
 {
-	int				index;
-	t_philosopher	*philo;
-	int				meals_eaten;
+	int	index;
 
 	if (!has_target_meals())
 		return (false);
 	index = 0;
 	while (index < philo_count())
 	{
-		philo = get_philosopher(index);
-		pthread_mutex_lock(&philo->mutex);
-		meals_eaten = philo->meals_eaten;
-		pthread_mutex_unlock(&philo->mutex);
-		if (meals_eaten < target_meals())
+		if (!philo_ate_target_meals(index))
 			return (false);
 		index++;
 	}
@@ -84,11 +81,10 @@ void	*run_waiter(void *_arg)
 	(void)_arg;
 	while (true)
 	{
-		check_if_someone_died();
-		if (someone_died())
-			return (NULL);
+		if (anyone_died())
+			break ;
 		if (all_ate_target_meals())
-			return (NULL);
+			break ;
 		sleep_us(WAITER_TIMEOUT_MICROSECS);
 	}
 	return (NULL);
