@@ -63,7 +63,7 @@ dkms.conf
 *.log
 
 # Build
-/philo
+/philo_bonus
 
 # Examples
 examples/example.c

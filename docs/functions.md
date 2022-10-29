@@ -1,27 +1,39 @@
-## `memset()`
+# Mandatory
 
-## `printf()`
+- memset()
+- printf()
+- malloc()
+- free()
+- write()
+- usleep()
+- gettimeofday()
+- pthread_create()
+- pthread_detach()
+- pthread_join()
+- pthread_mutex_init()
+- pthread_mutex_destroy()
+- pthread_mutex_lock()
+- pthread_mutex_unlock()
 
-## `malloc()`
+# Bonus
 
-## `free()`
+- memset()
+- printf()
+- malloc()
+- free()
+- write()
+- pthread_create()
+- pthread_detach()
+- pthread_join()
+- usleep()
+- gettimeofday()
 
-## `write()`
-
-## `usleep()`
-
-## `gettimeofday()`
-
-## `pthread_create()`
-
-## `pthread_detach()`
-
-## `pthread_join()`
-
-## `pthread_mutex_init()`
-
-## `pthread_mutex_destroy()`
-
-## `pthread_mutex_lock()`
-
-## `pthread_mutex_unlock()`
+- fork()
+- kill()
+- exit()
+- waitpid()
+- sem_open()
+- sem_close()
+- sem_post()
+- sem_wait()
+- sem_unlink()
