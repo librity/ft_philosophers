@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 13:01:19 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 14:15:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,8 @@ t_mutex			*get_last_fork(void);
 
 t_tid			*get_waiter(void);
 
-t_mutex			*printf_mutex(void);
-void			initialize_printf_mutex(void);
-void			destroy_printf_mutex(void);
-void			lock_printf_mutex(void);
-void			unlock_printf_mutex(void);
-
 bool			someone_died(void);
 void			enable_someone_died(void);
-
-t_mutex			*someone_died_mutex(void);
-void			initialize_someone_died_mutex(void);
-void			destroy_someone_died_mutex(void);
-void			lock_someone_died_mutex(void);
-void			unlock_someone_died_mutex(void);
 
 void			inspect_control(void);
 
@@ -168,11 +156,6 @@ void			tlog_time(t_millisecs time,
 
 int				spawn_thread(t_tid *id, t_troutine routine, void *argument);
 int				join_thread(t_tid id);
-
-int				init_mutex(t_mutex *mutex);
-int				destroy_mutex(t_mutex *mutex);
-int				lock_mutex(t_mutex *mutex);
-int				unlock_mutex(t_mutex *mutex);
 
 void			print_error(char *message);
 

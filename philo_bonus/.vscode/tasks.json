@@ -7,7 +7,7 @@
       "command": "/usr/bin/make",
       "args": ["re"],
       "options": {
-        "cwd": "${workspaceFolder}/philo"
+        "cwd": "${workspaceFolder}/philo_bonus"
       },
       "problemMatcher": ["$gcc"],
       "group": {

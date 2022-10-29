@@ -3,7 +3,7 @@
     {
       "name": "Linux",
       "includePath": [
-        "${workspaceFolder}/philo/includes",
+        "${workspaceFolder}/philo_bonus/includes",
         "~/.local/include"
       ],
       "defines": [],

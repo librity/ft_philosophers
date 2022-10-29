@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 12:47:32 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 14:40:47 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include <pthread.h>
+# include <semaphore.h>
 # include <stdbool.h>
 # include <sys/time.h>
 
@@ -32,9 +33,20 @@ typedef long			t_microsecs;
  * THREADS
 \******************************************************************************/
 
-typedef pthread_mutex_t	t_mutex;
 typedef pthread_t		t_tid;
 typedef void			*(*t_troutine)(void *);
+
+/******************************************************************************\
+ * PROCESSES
+\******************************************************************************/
+
+typedef pid_t			t_pid;
+
+/******************************************************************************\
+ * SEMAPHORES
+\******************************************************************************/
+
+typedef sem_t			t_semaphore;
 
 /******************************************************************************\
  * PHILOSOPHERS
@@ -43,12 +55,8 @@ typedef void			*(*t_troutine)(void *);
 typedef struct s_philosopher
 {
 	int					index;
-	t_tid				id;
+	t_pid				id;
 
-	t_mutex				*left_fork;
-	t_mutex				*right_fork;
-
-	t_mutex				mutex;
 	t_millisecs			dead_at;
 	int					meals_eaten;
 }						t_philosopher;
@@ -73,14 +81,11 @@ typedef struct s_philo
 	bool				has_number_of_times_each_philosopher_must_eat;
 	int					number_of_times_each_philosopher_must_eat;
 
-	t_mutex				printf_mutex;
-
-	t_mutex				someone_died_mutex;
 	bool				someone_died;
 
-	t_mutex				*forks;
 	t_philosopher		*philosophers;
-	t_tid				waiter;
+	t_semaphore			*forks;
+	t_pid				waiter;
 }						t_philo;
 
 #endif
