@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/23 16:58:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 13:03:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ t_mutex	*printf_mutex(void)
 
 void	initialize_printf_mutex(void)
 {
-	pthread_mutex_init(printf_mutex(), NULL);
+	init_mutex(printf_mutex());
 }
 
 void	destroy_printf_mutex(void)
 {
-	pthread_mutex_destroy(printf_mutex());
+	destroy_mutex(printf_mutex());
 }
 
 void	lock_printf_mutex(void)
 {
-	pthread_mutex_lock(printf_mutex());
+	lock_mutex(printf_mutex());
 }
 
 void	unlock_printf_mutex(void)
 {
-	pthread_mutex_unlock(printf_mutex());
+	unlock_mutex(printf_mutex());
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 08:49:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 13:03:21 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	initialize_forks(void)
 	index = 0;
 	while (index < fork_count())
 	{
-		pthread_mutex_init(get_fork(index), NULL);
+		init_mutex(get_fork(index));
 		index++;
 	}
 }
@@ -40,7 +40,7 @@ void	destroy_forks(void)
 	index = 0;
 	while (index < fork_count())
 	{
-		pthread_mutex_destroy(get_fork(index));
+		destroy_mutex(get_fork(index));
 		index++;
 	}
 	free(c()->forks);

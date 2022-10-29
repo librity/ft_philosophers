@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 12:53:51 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 13:04:35 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	spawn_philosophers(void)
 	while (index < philo_count())
 	{
 		philo = get_philosopher(index);
-		pthread_mutex_lock(&philo->mutex);
+		lock_mutex(&philo->mutex);
 		spawn_thread(&philo->id, &run_philosopher, philo);
-		pthread_mutex_unlock(&philo->mutex);
+		unlock_mutex(&philo->mutex);
 		index++;
 	}
 }

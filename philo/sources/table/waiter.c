@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 22:12:26 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 13:03:58 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static bool	philo_died(int index)
 	t_millisecs		_now;
 
 	philo = get_philosopher(index);
-	pthread_mutex_lock(&philo->mutex);
+	lock_mutex(&philo->mutex);
 	dead_at = philo->dead_at;
-	pthread_mutex_unlock(&philo->mutex);
+	unlock_mutex(&philo->mutex);
 	_now = get_elapsed_time_ms();
 	if (_now >= dead_at)
 	{
@@ -52,9 +52,9 @@ static bool	philo_ate_target_meals(int index)
 	int				meals_eaten;
 
 	philo = get_philosopher(index);
-	pthread_mutex_lock(&philo->mutex);
+	lock_mutex(&philo->mutex);
 	meals_eaten = philo->meals_eaten;
-	pthread_mutex_unlock(&philo->mutex);
+	unlock_mutex(&philo->mutex);
 	if (meals_eaten >= target_meals())
 		return (true);
 	return (false);

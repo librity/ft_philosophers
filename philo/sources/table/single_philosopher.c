@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 12:18:40 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 12:53:38 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 13:03:54 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	initialize(t_philosopher *philo, t_mutex *fork)
 {
 	ft_bzero(philo, sizeof(t_philosopher));
-	pthread_mutex_init(&philo->mutex, NULL);
+	init_mutex(&philo->mutex);
+	init_mutex(fork);
 	philo->index = 0;
 	philo->dead_at = time_to_die();
 	philo->meals_eaten = 0;
-	pthread_mutex_init(fork, NULL);
 	philo->left_fork = fork;
 	philo->right_fork = NULL;
 }
@@ -29,25 +29,25 @@ static void	*run_single_philosopher(void *philo_vp)
 	t_philosopher	*philo;
 
 	philo = philo_vp;
-	pthread_mutex_lock(philo->left_fork);
+	lock_mutex(philo->left_fork);
 	log_took_fork(philo);
 	log_died(philo->dead_at, philo);
-	pthread_mutex_unlock(philo->left_fork);
+	unlock_mutex(philo->left_fork);
 	return (NULL);
 }
 
 static void	run(t_philosopher *philo)
 {
-	pthread_mutex_lock(&philo->mutex);
+	lock_mutex(&philo->mutex);
 	spawn_thread(&philo->id, &run_single_philosopher, philo);
-	pthread_mutex_unlock(&philo->mutex);
+	unlock_mutex(&philo->mutex);
 	join_thread(philo->id);
 }
 
 static void	cleanup(t_philosopher *philo)
 {
-	pthread_mutex_destroy(&philo->mutex);
-	pthread_mutex_destroy(philo->left_fork);
+	destroy_mutex(&philo->mutex);
+	destroy_mutex(philo->left_fork);
 }
 
 bool	handled_single_philosopher(void)

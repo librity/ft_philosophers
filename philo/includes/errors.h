@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:27:39 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 21:48:24 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 13:00:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ number_of_times_each_philosopher_must_eat."
  * UTILS
 \******************************************************************************/
 
-# define SALLOC_ERR "Unable to allocate required memory."
+# define SALLOC_ERR "Can't allocate required memory."
+
+# define INIT_MUTEX_ERR "Can't initialize required mutex."
+# define DESTROY_MUTEX_ERR "Can't destroy required mutex."
+# define LOCK_MUTEX_ERR "Can't lock required mutex."
+# define UNLOCK_MUTEX_ERR "Can't unlock required mutex."
 
 #endif
