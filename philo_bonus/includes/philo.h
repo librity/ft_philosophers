@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:09:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 16:04:56 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <signal.h>
 
 # include <structs.h>
 # include <defines.h>
@@ -75,6 +76,8 @@ bool			is_last_philosopher(t_philosopher *philo);
 
 int				fork_count(void);
 t_semaphore		*forks(void);
+void			grab_fork(void);
+void			return_fork(void);
 
 t_tid			*get_waiter(void);
 
@@ -130,7 +133,7 @@ t_microsecs		msecs_to_usecs(t_millisecs mseconds);
  * ARGUMENTS
 \******************************************************************************/
 
-bool			parsed_arguments(void);
+bool			parse_arguments(void);
 
 bool			is_positive_int_string(char *str);
 
@@ -149,10 +152,16 @@ void			tlog_time(t_millisecs time,
 					t_philosopher *philo, char *message);
 
 /******************************************************************************\
- * UTILS
+ * RUNTIME
 \******************************************************************************/
 
+void			quit(void);
+
 void			die(char *message);
+
+/******************************************************************************\
+ * UTILS
+\******************************************************************************/
 
 void			spawn_thread(t_tid *id, t_troutine routine, void *argument);
 void			join_thread(t_tid id);
@@ -160,6 +169,12 @@ void			join_thread(t_tid id);
 t_semaphore		*open_semaphore(char *name, unsigned int init_value);
 void			close_semaphore(t_semaphore *close_me);
 void			unlink_semaphore(char *name);
+void			wait_semaphore(t_semaphore *wait_me);
+void			post_semaphore(t_semaphore *post_me);
+
+t_pid			fork_or_die(void);
+void			waitpid_or_die(t_pid pid, int *status, int options);
+void			kill_or_die(t_pid pid, int signal);
 
 void			ft_bzero(void *s, size_t n);
 void			*ft_salloc(size_t size);

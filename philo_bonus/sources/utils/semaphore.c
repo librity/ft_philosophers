@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:28:13 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:09:09 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:25:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,22 @@ void	unlink_semaphore(char *name)
 	result = sem_unlink(name);
 	if (result < 0)
 		die(SEM_UNLINK_ERR);
+}
+
+void	wait_semaphore(t_semaphore *wait_me)
+{
+	int	result;
+
+	result = sem_wait(wait_me);
+	if (result < 0)
+		die(SEM_WAIT_ERR);
+}
+
+void	post_semaphore(t_semaphore *post_me)
+{
+	int	result;
+
+	result = sem_post(post_me);
+	if (result < 0)
+		die(SEM_POST_ERR);
 }

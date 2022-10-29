@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:26:03 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:15:18 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:19:43 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,11 @@ static void	set_arguments(void)
 	enable_target_meals();
 }
 
-bool	parsed_arguments(void)
+void	parse_arguments(void)
 {
 	validate_argc();
 	validate_argv();
 	set_arguments();
 	if (debug())
 		inspect_control();
-	return (true);
 }

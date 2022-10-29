@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 13:27:39 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:08:53 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 16:04:14 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,11 @@ number_of_times_each_philosopher_must_eat."
 # define SEM_OPEN_ERR "Can't open required semaphore."
 # define SEM_CLOSE_ERR "Can't close required semaphore."
 # define SEM_UNLINK_ERR "Can't unlink required semaphore."
+# define SEM_WAIT_ERR "Can't wait for required semaphore."
+# define SEM_POST_ERR "Can't post on required semaphore."
+
+# define FORK_ERR "Can't fork required process"
+# define WAITPID_ERR "Can't wait for required process"
+# define KILL_ERR "Can't send required signal to process"
 
 #endif

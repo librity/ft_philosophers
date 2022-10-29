@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton.c                                        :+:      :+:    :+:   */
+/*   proc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:17:47 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/03/01 19:29:53 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/29 16:04:28 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-t_philo	*c(void)
+t_pid	fork_or_die(void)
 {
-	static t_philo	__control_instance;
+	t_pid	pid;
 
-	return (&__control_instance);
+	pid = fork();
+	if (pid < 0)
+		die(FORK_ERR);
+	return (pid);
 }
 
-void	initialize_control(int argc, char **argv)
+void	waitpid_or_die(t_pid pid, int *status, int options)
 {
-	c()->start = now();
-	c()->argc = argc;
-	c()->argv = argv;
-	c()->debug = false;
-	c()->has_number_of_times_each_philosopher_must_eat = false;
-	c()->someone_died = false;
+	t_pid	result;
+
+	result = waitpid(pid, status, options);
+	if (result < 0)
+		die(WAITPID_ERR);
 }
 
-static void	deinitialize_control(void)
+void	kill_or_die(t_pid pid, int signal)
 {
-	ft_bzero(c(), sizeof(t_philo));
-}
+	t_pid	result;
 
-void	cleanup_control(void)
-{
-	deinitialize_control();
+	result = kill(pid, signal);
+	if (result < 0)
+		die(KILL_ERR);
 }

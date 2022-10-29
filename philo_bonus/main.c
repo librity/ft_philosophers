@@ -6,11 +6,22 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 10:34:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 14:08:28 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:23:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+static void	initialize(int argc, char **argv)
+{
+	initialize_control(argc, argv);
+	parse_arguments();
+	if (philo_count() <= 0)
+		quit();
+	if (handled_single_philosopher())
+		quit();
+	initialize_table();
+}
 
 static void	run(void)
 {
@@ -28,14 +39,7 @@ static void	cleanup(void)
 
 int	main(int argc, char **argv)
 {
-	initialize_control(argc, argv);
-	if (!parsed_arguments())
-		return (EXIT_FAILURE);
-	if (philo_count() <= 0)
-		return (EXIT_SUCCESS);
-	if (handled_single_philosopher())
-		return (EXIT_SUCCESS);
-	initialize_table();
+	initialize(argc, argv);
 	run();
 	cleanup();
 	return (EXIT_SUCCESS);
