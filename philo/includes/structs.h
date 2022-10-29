@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 15:10:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 12:47:32 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef long			t_microsecs;
  * THREADS
 \******************************************************************************/
 
-typedef pthread_t		t_tid;
 typedef pthread_mutex_t	t_mutex;
+typedef pthread_t		t_tid;
 typedef void			*(*t_troutine)(void *);
 
 /******************************************************************************\

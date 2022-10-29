@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 08:49:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 12:41:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static void	initialize_philosopher(int index)
 	t_philosopher	*philo;
 
 	philo = get_philosopher(index);
+	pthread_mutex_init(&philo->mutex, NULL);
 	philo->index = index;
 	philo->dead_at = time_to_die();
 	philo->meals_eaten = 0;
-	pthread_mutex_init(&philo->mutex, NULL);
 	philo->left_fork = get_fork(index);
 	philo->right_fork = resolve_right_fork(philo);
 }
@@ -62,6 +62,16 @@ void	initialize_philosophers(void)
 
 void	destroy_philosophers(void)
 {
+	t_philosopher	*philo;
+	int				index;
+
+	index = 0;
+	while (index < philo_count())
+	{
+		philo = get_philosopher(index);
+		pthread_mutex_destroy(&philo->mutex);
+		index++;
+	}
 	free(c()->philosophers);
 	c()->philosophers = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 08:49:54 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 12:48:51 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ void			inspect_control(void);
  * TABLE
 \******************************************************************************/
 
+bool			handled_single_philosopher(void);
+
 void			initialize_table(void);
 void			destroy_table(void);
 
@@ -163,6 +165,9 @@ void			tlog_time(t_millisecs time,
 /******************************************************************************\
  * UTILS
 \******************************************************************************/
+
+int				spawn_thread(t_tid *id, t_troutine routine, void *argument);
+int				join_thread(t_tid id);
 
 void			print_error(char *message);
 
