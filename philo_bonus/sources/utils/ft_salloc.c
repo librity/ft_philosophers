@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 22:57:20 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/24 16:03:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:12:59 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	*ft_salloc(size_t size)
 
 	pointer = malloc(size);
 	if (pointer == NULL && (size > 0))
-		print_error(SALLOC_ERR);
+		die(SALLOC_ERR);
 	return (pointer);
 }

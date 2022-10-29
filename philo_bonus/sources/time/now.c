@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:49:26 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:13:46 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	gettimeofday_or_err(t_timeval *tp, t_timezone *tzp)
 
 	result = gettimeofday(tp, tzp);
 	if (result < 0)
-		print_error(GET_TIME_ERR);
+		die(GET_TIME_ERR);
 }
 
 t_microsecs	now(void)

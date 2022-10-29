@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 22:21:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 19:31:20 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:13:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sleep_ms(t_millisecs milliseconds)
 
 	result = usleep(milliseconds * MICROSECONDS_IN_A_MILLISECONDS);
 	if (result != 0)
-		print_error(USLEEP_ERR);
+		die(USLEEP_ERR);
 }
 
 void	sleep_us(t_microsecs microseconds)
@@ -27,5 +27,5 @@ void	sleep_us(t_microsecs microseconds)
 
 	result = usleep(microseconds);
 	if (result != 0)
-		print_error(USLEEP_ERR);
+		die(USLEEP_ERR);
 }

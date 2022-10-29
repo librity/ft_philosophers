@@ -6,23 +6,19 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:26:03 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/27 20:59:21 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:15:18 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static bool	bad_argc(void)
+static void	validate_argc(void)
 {
 	if (argc() < 5 || argc() > 6)
-	{
-		print_error(ARGC_ERR);
-		return (true);
-	}
-	return (false);
+		die(ARGC_ERR);
 }
 
-static bool	bad_argv(void)
+static void	validate_argv(void)
 {
 	char	**args;
 
@@ -30,13 +26,9 @@ static bool	bad_argv(void)
 	while (*args != NULL)
 	{
 		if (!is_positive_int_string(*args))
-		{
-			print_error(ARGV_ERR);
-			return (true);
-		}
+			die(ARGV_ERR);
 		args++;
 	}
-	return (false);
 }
 
 static void	set_arguments(void)
@@ -53,10 +45,8 @@ static void	set_arguments(void)
 
 bool	parsed_arguments(void)
 {
-	if (bad_argc())
-		return (false);
-	if (bad_argv())
-		return (false);
+	validate_argc();
+	validate_argv();
 	set_arguments();
 	if (debug())
 		inspect_control();

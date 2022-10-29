@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:14:41 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/28 15:41:58 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/29 15:13:23 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	number_of_times_each_philosopher_must_eat(void)
 void	set_number_of_times_each_philosopher_must_eat(void)
 {
 	if (argv()[5] == NULL)
-	{
-		print_error(NULL_EAT_ERR);
-		return ;
-	}
+		die(NULL_EAT_ERR);
 	c()->number_of_times_each_philosopher_must_eat = ft_atoi(argv()[5]);
 }
 
