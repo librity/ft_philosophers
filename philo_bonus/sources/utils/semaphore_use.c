@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:28:13 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 19:43:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:10:18 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	post_semaphore(t_semaphore *post_me)
 		die(SEM_POST_ERR);
 }
 
-int	get_semaphore(t_semaphore *get_me)
+long	get_semaphore(t_semaphore *get_me)
 {
-	return ((int)*(long *)get_me);
+	return (*(long *)get_me);
 }
 
-void	set_semaphore(t_semaphore *set_me, int value)
+void	set_semaphore(t_semaphore *set_me, long value)
 {
-	*set_me = (t_semaphore)(long)value;
+	*set_me = (t_semaphore)value;
 }

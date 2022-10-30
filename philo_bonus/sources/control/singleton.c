@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 15:17:47 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:12:27 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	initialize_control(int argc, char **argv)
 	c()->debug = false;
 	c()->has_number_of_times_each_philosopher_must_eat = false;
 	c()->someone_died = false;
+	initialize_printf_mutex();
+	initialize_someone_died_mutex();
+	initialize_someone_died();
 }
 
 static void	deinitialize_control(void)
@@ -36,5 +39,8 @@ static void	deinitialize_control(void)
 
 void	cleanup_control(void)
 {
+	destroy_printf_mutex();
+	destroy_someone_died_mutex();
+	destroy_someone_died();
 	deinitialize_control();
 }

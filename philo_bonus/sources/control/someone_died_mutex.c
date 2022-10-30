@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   core.c                                             :+:      :+:    :+:   */
+/*   someone_died_mutex.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 16:12:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:00:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	initialize_table(void)
+void	initialize_someone_died_mutex(void)
 {
-	initialize_forks();
-	initialize_philosophers();
+	t_semaphore	**someone_died_mutex;
+
+	sem_unlink(PRINTF_SEM);
+	someone_died_mutex = &c()->someone_died_mutex;
+	*someone_died_mutex = open_semaphore(SOMEONE_DIED_MUTEX_SEM, 1);
 }
 
-void	destroy_table(void)
+void	destroy_someone_died_mutex(void)
 {
-	destroy_forks();
-	destroy_philosophers();
+	close_semaphore(c()->someone_died_mutex);
+	sem_unlink(PRINTF_SEM);
+	c()->someone_died_mutex = NULL;
 }
 
-void	run_table(void)
+void	lock_someone_died_mutex(void)
 {
-	spawn_philosophers();
-	join_philosophers();
+	wait_semaphore(c()->someone_died_mutex);
+}
+
+void	unlock_someone_died_mutex(void)
+{
+	post_semaphore(c()->someone_died_mutex);
 }

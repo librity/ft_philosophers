@@ -6,21 +6,41 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:38:44 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 14:13:50 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:17:41 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
+void	initialize_someone_died(void)
+{
+	t_semaphore	**_someone_died;
+
+	sem_unlink(SOMEONE_DIED_SEM);
+	_someone_died = &c()->someone_died;
+	*_someone_died = open_semaphore(SOMEONE_DIED_SEM, 0);
+}
+
+void	destroy_someone_died(void)
+{
+	close_semaphore(c()->someone_died);
+	sem_unlink(SOMEONE_DIED_SEM);
+	c()->someone_died = NULL;
+}
+
 bool	someone_died(void)
 {
-	int	value;
+	long	value;
 
+	lock_someone_died_mutex();
 	value = get_semaphore(c()->someone_died);
-	return (value > 0);
+	unlock_someone_died_mutex();
+	return (value != NO_ONE_DIED);
 }
 
 void	enable_someone_died(void)
 {
+	lock_someone_died_mutex();
 	post_semaphore(c()->someone_died);
+	unlock_someone_died_mutex();
 }

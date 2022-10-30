@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 15:01:41 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:11:01 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,11 @@ void			set_number_of_times_each_philosopher_must_eat(void);
 bool			has_number_of_times_each_philosopher_must_eat(void);
 void			enable_number_of_times_each_philosopher_must_eat(void);
 
+void			initialize_printf_mutex(void);
+void			destroy_printf_mutex(void);
+void			lock_printf_mutex(void);
+void			unlock_printf_mutex(void);
+
 int				target_meals(void);
 void			set_target_meals(void);
 bool			has_target_meals(void);
@@ -81,8 +86,15 @@ int				fork_count(void);
 void			grab_fork(void);
 void			return_fork(void);
 
+void			initialize_someone_died(void);
+void			destroy_someone_died(void);
 bool			someone_died(void);
 void			enable_someone_died(void);
+
+void			initialize_someone_died_mutex(void);
+void			destroy_someone_died_mutex(void);
+void			lock_someone_died_mutex(void);
+void			unlock_someone_died_mutex(void);
 
 /******************************************************************************\
  * TABLE
@@ -91,9 +103,6 @@ void			enable_someone_died(void);
 void			initialize_table(void);
 void			destroy_table(void);
 void			run_table(void);
-
-void			initialize_someone_died(void);
-void			destroy_someone_died(void);
 
 void			initialize_forks(void);
 void			destroy_forks(void);
@@ -174,8 +183,8 @@ void			unlink_semaphore(char *name);
 
 void			wait_semaphore(t_semaphore *wait_me);
 void			post_semaphore(t_semaphore *post_me);
-int				get_semaphore(t_semaphore *get_me);
-void			set_semaphore(t_semaphore *set_me, int value);
+long			get_semaphore(t_semaphore *get_me);
+void			set_semaphore(t_semaphore *set_me, long value);
 
 t_pid			fork_or_die(void);
 void			waitpid_or_die(t_pid pid, int *status, int options);

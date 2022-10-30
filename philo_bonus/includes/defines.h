@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 19:39:26 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:17:22 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@
  * SEMAPHORES
 \******************************************************************************/
 
-# define FORKS_SEMAPHORE_NAME "/philo_bonus_forks"
-# define SOMEONE_DIED_SEMAPHORE_NAME "/philo_bonus_someone_died"
+# define PRINTF_SEM "/philo_printf"
+# define FORKS_SEM "/philo_forks"
+# define SOMEONE_DIED_SEM "/philo_someone_died"
+# define SOMEONE_DIED_MUTEX_SEM "/philo_someone_die_mutex"
 
 # define SEMAPHORE_PERMISSION 0660
+
+# define NO_ONE_DIED 0
 
 /******************************************************************************\
  * TIME

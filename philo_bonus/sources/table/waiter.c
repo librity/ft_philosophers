@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 15:07:36 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:19:31 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ static bool	philo_died(t_philosopher *philo)
 	_now = get_elapsed_time_ms();
 	if (_now >= dead_at)
 	{
-		log_died(_now, philo);
+		if (!someone_died())
+			log_died(_now, philo);
 		enable_someone_died();
+		if (only_one_philosopher())
+			return_fork();
 		return (true);
 	}
 	return (false);
