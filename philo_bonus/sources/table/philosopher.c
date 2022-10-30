@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:44:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:54:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,4 @@ void	run_philosopher(t_philosopher *philo)
 	philo_loop(philo);
 	join_waiter(philo);
 	quit();
-	// cleanup_philosopher(philo);
-	// exit(EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:40:08 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:54:55 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,4 @@ void	kill_philosophers(void)
 		kill_or_die(philo->id, SIGQUIT);
 		index++;
 	}
-}
-
-void	cleanup_philosopher(t_philosopher *philo)
-{
-	close_semaphore(philo->mutex);
-	free(philo->mutex_name);
-	destroy_forks();
-	cleanup_control();
 }
