@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   forks.c                                            :+:      :+:    :+:   */
+/*   use_forks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 19:18:43 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 19:11:15 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 19:14:09 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-int	total_forks(void)
+void	grab_fork(void)
 {
-	return (total_philos());
+	wait_semaphore(forks());
 }
 
-t_semaphore	*forks(void)
+void	return_fork(void)
 {
-	return (c()->forks);
+	post_semaphore(forks());
 }
 
-int	fork_count(void)
+void	return_all_forks(void)
 {
-	return (get_semaphore(c()->forks));
+	int	total;
+
+	total = total_forks() * 2;
+	while (total > 0)
+	{
+		return_fork();
+		total--;
+	}
 }

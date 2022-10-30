@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:55:04 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 19:14:13 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,10 @@ bool			is_last_philosopher(t_philosopher *philo);
 t_semaphore		*forks(void);
 int				total_forks(void);
 int				fork_count(void);
+
 void			grab_fork(void);
 void			return_fork(void);
+void			return_all_forks(void);
 
 void			initialize_someone_died(void);
 void			destroy_someone_died(void);
