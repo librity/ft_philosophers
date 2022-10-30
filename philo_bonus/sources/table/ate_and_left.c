@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 14:47:12 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:53:12 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ static bool	ate_last_meal(t_philosopher *philo)
 	bool	_ate_last_meal;
 
 	_ate_last_meal = false;
+	lock_philosopher(philo);
 	philo->dead_at = get_elapsed_time_ms() + time_to_die();
 	if (has_target_meals())
 	{
 		philo->meals_eaten++;
 		_ate_last_meal = philo->meals_eaten >= target_meals();
 	}
+	unlock_philosopher(philo);
 	return (_ate_last_meal);
 }
 

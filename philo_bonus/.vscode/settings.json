@@ -17,6 +17,7 @@
     "*.tcc": "c",
     "functional": "c",
     "stdio.h": "c",
-    "cstdlib": "c"
+    "cstdlib": "c",
+    "stdbool.h": "c"
   }
 }

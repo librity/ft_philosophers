@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 16:19:31 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:08:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static bool	philo_died(t_philosopher *philo)
 	t_millisecs	dead_at;
 	t_millisecs	_now;
 
+	lock_philosopher(philo);
 	dead_at = philo->dead_at;
+	unlock_philosopher(philo);
 	_now = get_elapsed_time_ms();
 	if (_now >= dead_at)
 	{
@@ -37,7 +39,9 @@ static bool	philo_ate_target_meals(t_philosopher *philo)
 
 	if (!has_target_meals())
 		return (false);
+	lock_philosopher(philo);
 	meals_eaten = philo->meals_eaten;
+	unlock_philosopher(philo);
 	if (meals_eaten >= target_meals())
 		return (true);
 	return (false);

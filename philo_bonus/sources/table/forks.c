@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 15:51:29 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:11:53 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void	initialize_forks(void)
 void	destroy_forks(void)
 {
 	close_semaphore(c()->forks);
-	sem_unlink(FORKS_SEM);
 	c()->forks = NULL;
 }

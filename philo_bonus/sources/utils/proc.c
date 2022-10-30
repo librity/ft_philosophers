@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 19:29:53 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 16:04:28 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:05:10 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ void	kill_or_die(t_pid pid, int signal)
 	result = kill(pid, signal);
 	if (result < 0)
 		die(KILL_ERR);
+}
+
+void	kill_all_or_die(int signal)
+{
+	kill_or_die(0, signal);
 }

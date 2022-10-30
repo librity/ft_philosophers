@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 16:32:18 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:40:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void			destroy_forks(void);
 
 void			initialize_philosophers(void);
 void			destroy_philosophers(void);
+void			kill_philosophers(void);
+void			cleanup_philosopher(t_philosopher *philo);
 
 void			spawn_philosophers(void);
 void			join_philosophers(void);
@@ -117,8 +119,11 @@ void			join_philosophers(void);
 void			run_philosopher(t_philosopher *philo);
 bool			ate_and_left(t_philosopher *philo);
 
-void			spawn_waiter(t_philosopher *philo, t_tid *waiter);
-void			join_waiter(t_tid waiter);
+void			lock_philosopher(t_philosopher *philo);
+void			unlock_philosopher(t_philosopher *philo);
+
+void			spawn_waiter(t_philosopher *philo);
+void			join_waiter(t_philosopher *philo);
 
 void			*run_waiter(void *philo_vp);
 
@@ -190,8 +195,10 @@ void			set_semaphore(t_semaphore *set_me, long value);
 t_pid			fork_or_die(void);
 void			waitpid_or_die(t_pid pid, int *status, int options);
 void			kill_or_die(t_pid pid, int signal);
+void			kill_all_or_die(int signal);
 
 void			ft_bzero(void *s, size_t n);
+void			*ft_memcpy(void *dest, const void *src, size_t n);
 void			*ft_salloc(size_t size);
 void			*ft_calloc(size_t nmemb, size_t size);
 
@@ -200,8 +207,13 @@ int				ft_isdigit(int c);
 bool			ft_is_whitespace(char character);
 char			*ft_skip_whitespace(char *str);
 bool			ft_is_plus_or_minus(char character);
+size_t			ft_strsize(const char *s);
+char			*ft_strjoin(char const *s1, char const *s2);
+size_t			ft_strlcat(char *dst, const char *src, size_t size);
+size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 
 int				ft_atoi(const char *str);
 long			ft_atol(const char *str);
+char			*ft_itoa(int n);
 
 #endif

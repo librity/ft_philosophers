@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   threads.c                                          :+:      :+:    :+:   */
+/*   sem_leak.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:08:46 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/29 14:16:14 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/30 18:45:47 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <philo.h>
+// clang-12 sem_leak.c  && valgrind ./a.out
 
-void	spawn_waiter(t_philosopher *philo)
-{
-	spawn_thread(&philo->waiter, &run_waiter, philo);
-}
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 
-void	join_waiter(t_philosopher *philo)
+#define SEM_NAME "/test"
+
+int	main(void)
 {
-	join_thread(philo->waiter);
+	sem_t	*mutex;
+
+	sem_unlink(SEM_NAME);
+	mutex = sem_open(SEM_NAME, O_CREAT, 0660, 1);
+
+	// free(mutex);
+	sem_close(mutex);
+	return (0);
 }

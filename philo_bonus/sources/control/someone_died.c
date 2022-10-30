@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:38:44 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 16:17:41 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:11:49 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	initialize_someone_died(void)
 void	destroy_someone_died(void)
 {
 	close_semaphore(c()->someone_died);
-	sem_unlink(SOMEONE_DIED_SEM);
 	c()->someone_died = NULL;
 }
 

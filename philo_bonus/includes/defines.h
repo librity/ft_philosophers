@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 16:44:49 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 18:37:02 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 \******************************************************************************/
 
 # define ODD_ONES_DELAY_MICROSECS 500
-# define WAITER_TIMEOUT_MICROSECS 9000
+# define WAITER_TIMEOUT_MICROSECS 5000
 
 /******************************************************************************\
  * SEMAPHORES
@@ -38,6 +38,7 @@
 # define FORKS_SEM "/philo_forks"
 # define SOMEONE_DIED_SEM "/philo_someone_died"
 # define SOMEONE_DIED_MUTEX_SEM "/philo_someone_die_mutex"
+# define PHILO_MUTEX_SEM "/philo_mutex_"
 
 # define SEMAPHORE_PERMISSION 0660
 

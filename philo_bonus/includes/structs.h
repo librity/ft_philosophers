@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 15:58:03 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:49:34 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ typedef struct s_philosopher
 	int					index;
 	t_pid				id;
 
+	char				*mutex_name;
+	t_semaphore			*mutex;
+
+	t_tid				waiter;
 	t_millisecs			dead_at;
 	int					meals_eaten;
 }						t_philosopher;

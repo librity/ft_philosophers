@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   mutex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:47:58 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:48:08 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	initialize_printf_mutex(void)
+void	lock_philosopher(t_philosopher *philo)
 {
-	t_semaphore	**printf_mutex;
-
-	sem_unlink(PRINTF_SEM);
-	printf_mutex = &c()->printf_mutex;
-	*printf_mutex = open_semaphore(PRINTF_SEM, 1);
+	wait_semaphore(philo->mutex);
 }
 
-void	destroy_printf_mutex(void)
+void	unlock_philosopher(t_philosopher *philo)
 {
-	close_semaphore(c()->printf_mutex);
-	c()->printf_mutex = NULL;
-}
-
-void	lock_printf_mutex(void)
-{
-	wait_semaphore(c()->printf_mutex);
-}
-
-void	unlock_printf_mutex(void)
-{
-	post_semaphore(c()->printf_mutex);
+	post_semaphore(philo->mutex);
 }
