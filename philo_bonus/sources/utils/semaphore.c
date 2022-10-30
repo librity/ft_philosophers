@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 15:28:13 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 19:12:57 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:44:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	close_semaphore(t_semaphore *close_me)
 {
 	int	result;
 
+	if (close_me == NULL)
+		return ;
 	result = sem_close(close_me);
 	if (result < 0)
 		die(SEM_CLOSE_ERR);
@@ -35,6 +37,8 @@ void	unlink_semaphore(char *name)
 {
 	int	result;
 
+	if (name == NULL)
+		return ;
 	result = sem_unlink(name);
 	if (result < 0)
 		die(SEM_UNLINK_ERR);

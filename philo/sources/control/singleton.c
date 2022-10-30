@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 00:32:32 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 13:01:35 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:54:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_philo	*c(void)
 
 void	initialize_control(int argc, char **argv)
 {
-	c()->start = now();
 	c()->argc = argc;
 	c()->argv = argv;
 	c()->debug = false;

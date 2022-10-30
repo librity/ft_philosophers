@@ -16,6 +16,7 @@
     "philo.h": "c",
     "*.tcc": "c",
     "functional": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "cstdlib": "c"
   }
 }

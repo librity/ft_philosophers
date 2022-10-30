@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 16:11:01 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:32:18 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void			enable_debug(void);
 int				argc(void);
 char			**argv(void);
 
+void			set_start(void);
 t_microsecs		start(void);
 t_microsecs		start_us(void);
 t_millisecs		start_ms(void);
