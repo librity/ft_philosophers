@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 19:37:23 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 14:14:26 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,9 @@ typedef struct s_philo
 	bool				has_number_of_times_each_philosopher_must_eat;
 	int					number_of_times_each_philosopher_must_eat;
 
-
-	t_philosopher		*philosophers;
 	t_semaphore			*forks;
 	t_semaphore			*someone_died;
-	t_pid				waiter;
+	t_philosopher		*philosophers;
 }						t_philo;
 
 #endif

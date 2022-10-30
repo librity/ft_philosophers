@@ -1,57 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher.c                                      :+:      :+:    :+:   */
+/*   waiter.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 15:06:55 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:07:36 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-static void	think(t_philosopher *philo)
+static bool	philo_died(t_philosopher *philo)
 {
-	log_thinking(philo);
+	t_millisecs	dead_at;
+	t_millisecs	_now;
+
+	dead_at = philo->dead_at;
+	_now = get_elapsed_time_ms();
+	if (_now >= dead_at)
+	{
+		log_died(_now, philo);
+		enable_someone_died();
+		return (true);
+	}
+	return (false);
 }
 
-static void	sleeep(t_philosopher *philo)
+static bool	philo_ate_target_meals(t_philosopher *philo)
 {
-	log_sleeping(philo);
-	sleep_ms(time_to_sleep());
+	int	meals_eaten;
+
+	if (!has_target_meals())
+		return (false);
+	meals_eaten = philo->meals_eaten;
+	if (meals_eaten >= target_meals())
+		return (true);
+	return (false);
 }
 
-void	delay_odd_ones(t_philosopher *philo)
+void	*run_waiter(void *philo_vp)
 {
-	if (philo->index % 2 == 1)
-		sleep_us(ODD_ONES_DELAY_MICROSECS);
-}
+	t_philosopher	*philo;
 
-static void	philo_loop(t_philosopher *philo)
-{
+	philo = philo_vp;
 	while (true)
 	{
 		if (someone_died())
 			break ;
-		if (ate_and_left(philo))
+		if (philo_died(philo))
 			break ;
-		if (someone_died())
+		if (philo_ate_target_meals(philo))
 			break ;
-		sleeep(philo);
-		if (someone_died())
-			break ;
-		think(philo);
+		sleep_us(WAITER_TIMEOUT_MICROSECS);
 	}
-}
-
-void	run_philosopher(t_philosopher *philo)
-{
-	t_tid	waiter;
-
-	spawn_waiter(philo, &waiter);
-	philo_loop(philo);
-	join_waiter(waiter);
-	quit();
+	return (NULL);
 }

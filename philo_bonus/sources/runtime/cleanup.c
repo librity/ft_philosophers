@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quit.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 15:20:15 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 15:02:30 by lpaulo-m         ###   ########.fr       */
+/*   Created: 2022/10/22 15:28:13 by lpaulo-m          #+#    #+#             */
+/*   Updated: 2022/10/30 15:01:30 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
 
-void	quit(void)
+void	cleanup(void)
 {
-	cleanup();
-	exit(EXIT_SUCCESS);
+	destroy_table();
+	cleanup_control();
 }

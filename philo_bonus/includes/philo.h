@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:42:09 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/29 19:44:34 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:01:41 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void			enable_someone_died(void);
 
 void			initialize_table(void);
 void			destroy_table(void);
+void			run_table(void);
 
 void			initialize_someone_died(void);
 void			destroy_someone_died(void);
@@ -103,10 +104,13 @@ void			destroy_philosophers(void);
 void			spawn_philosophers(void);
 void			join_philosophers(void);
 
-void			*run_philosopher(void *philo_vp);
+void			run_philosopher(t_philosopher *philo);
 bool			ate_and_left(t_philosopher *philo);
 
-void			*run_waiter(void *_arg);
+void			spawn_waiter(t_philosopher *philo, t_tid *waiter);
+void			join_waiter(t_tid waiter);
+
+void			*run_waiter(void *philo_vp);
 
 /******************************************************************************\
  * TIME
@@ -154,6 +158,8 @@ void			tlog_time(t_millisecs time,
 void			quit(void);
 
 void			die(char *message);
+
+void			cleanup(void);
 
 /******************************************************************************\
  * UTILS

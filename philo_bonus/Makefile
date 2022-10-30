@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/10/29 13:45:29 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/10/30 15:06:29 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -204,17 +204,17 @@ VG_LOG_FLAGS = $(VG_FLAGS) \
 	--verbose
 VG_LOG = valgrind_leaks.log
 
-# VG_TARGET = ./philo 2 100 200 200
-VG_TARGET = ./philo 4 210 100 100 7
+# VG_ARGS = 2 100 200 200
+VG_ARGS = 4 210 100 100 7
 
 hg: vg_build
-	$(VG) $(HG_FLAGS) $(VG_TARGET)
+	$(VG) $(HG_FLAGS) ./$(NAME) $(VG_ARGS)
 
 vg: vg_build
-	$(VG) $(VG_FLAGS) $(VG_TARGET)
+	$(VG) $(VG_FLAGS) ./$(NAME) $(VG_ARGS)
 
 vglog: vg_build
-	$(VG) $(VG_LOG_FLAGS) $(VG_TARGET)
+	$(VG) $(VG_LOG_FLAGS) ./$(NAME) $(VG_ARGS)
 
 vg_build: $(M_ARCHIVE)
 	$(CC_VG) \
