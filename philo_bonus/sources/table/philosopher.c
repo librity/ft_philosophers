@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/11/25 16:05:50 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/11/27 20:30:00 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	delay_last_ones(t_philosopher *philo)
 
 static void	philo_loop(t_philosopher *philo)
 {
-	// delay_last_ones(philo);
 	while (true)
 	{
 		if (someone_died())

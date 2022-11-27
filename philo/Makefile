@@ -6,7 +6,7 @@
 #    By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 16:25:08 by lpaulo-m          #+#    #+#              #
-#    Updated: 2022/10/30 15:11:14 by lpaulo-m         ###   ########.fr        #
+#    Updated: 2022/11/27 20:17:00 by lpaulo-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -204,8 +204,8 @@ VG_LOG_FLAGS = $(VG_FLAGS) \
 	--verbose
 VG_LOG = valgrind_leaks.log
 
-# VG_ARGS = 2 100 200 200
-VG_ARGS = 4 210 100 100 7
+VG_ARGS = 2 100 200 200
+# VG_ARGS = 4 210 100 100 7
 
 hg: vg_build
 	$(VG) $(HG_FLAGS) ./$(NAME) $(VG_ARGS)
