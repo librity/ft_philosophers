@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 18:20:45 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:37:02 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:02:38 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
  * TABLE
 \******************************************************************************/
 
-# define ODD_ONES_DELAY_MICROSECS 500
-# define WAITER_TIMEOUT_MICROSECS 5000
+# define ODD_ONES_DELAY_MICROSECS 100
+# define WAITER_TIMEOUT_MICROSECS 6000
 
 /******************************************************************************\
  * SEMAPHORES

@@ -6,7 +6,7 @@
 /*   By: lpaulo-m <lpaulo-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 15:31:16 by lpaulo-m          #+#    #+#             */
-/*   Updated: 2022/10/30 18:54:50 by lpaulo-m         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:05:50 by lpaulo-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static void	sleeep(t_philosopher *philo)
 	sleep_ms(time_to_sleep());
 }
 
-void	delay_odd_ones(t_philosopher *philo)
+void	delay_last_ones(t_philosopher *philo)
 {
-	if (philo->index % 2 == 1 || is_last_philosopher(philo))
+	if (philo->index % 2 == 1)
 		sleep_us(ODD_ONES_DELAY_MICROSECS);
 }
 
 static void	philo_loop(t_philosopher *philo)
 {
-	delay_odd_ones(philo);
+	// delay_last_ones(philo);
 	while (true)
 	{
 		if (someone_died())

@@ -3,8 +3,8 @@
 # SOURCE: https://github.com/wwwwelton/philosophers/blob/master/test.sh
 
 ## PATH VARS
-BONUS_BIN_PATH=./philo_bonus
-BONUS_MAKEFILE_PATH=.
+MAKEFILE_PATH=.
+BIN_PATH=./philo_bonus
 
 ## TEST PARAMETERS - CHANGE AS NEEDED
 NB_OF_TESTS=1
